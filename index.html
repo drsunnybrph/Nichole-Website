@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#F4EEE4">
+<title>Herbal Medicine — Madre y Agua</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;700&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #1C1008;
+  --bark:   #3D2010;
+  --rust:   #C84B18;
+  --amber:  #B07030;
+  --sand:   #C8A878;
+  --sage:   #7A8A68;
+  --moss:   #4A5838;
+  --linen:  #F4EEE4;
+  --parch:  #EDE4D6;
+  --accent: #4A6840; /* herb green */
+  --accent-light: #D8E4CC;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; color-scheme:light; background:var(--linen); }
+body { font-family:'Jost',sans-serif; font-weight:300; color:var(--ink); background-color:var(--linen); overflow-x:hidden; -webkit-text-size-adjust:100%; }
+
+@media (prefers-color-scheme: dark) {
+  html, body          { background-color:#F4EEE4 !important; color:#1C1008 !important; }
+  nav                 { background-color:#F4EEE4 !important; }
+  .hero               { background-color:#1C1008 !important; }
+  .intro-wrap         { background-color:#F4EEE4 !important; }
+  .what-wrap          { background-color:#EDE4D6 !important; }
+  .process-wrap       { background-color:#1C1008 !important; }
+  .faq-wrap           { background-color:#F4EEE4 !important; }
+  .cta-wrap           { background-color:#1C1008 !important; }
+  footer, .ft-bottom  { background-color:#1C1008 !important; }
+  .intro-wrap h2, .faq-wrap h2, .what-wrap h2 { color:#1C1008 !important; }
+  .intro-wrap p, .what-wrap p, .faq-wrap p    { color:#3D2010 !important; }
+  .what-item h3                                { color:#1C1008 !important; }
+  .faq-item h4                                 { color:#1C1008 !important; }
+  .hero h1, .hero p, .hero .eyebrow            { color:#F4EEE4 !important; }
+  .process-wrap h2, .process-wrap p            { color:#F4EEE4 !important; }
+  .step h3                                     { color:#F4EEE4 !important; }
+  .step p                                      { color:#EDE4D6 !important; }
+  .cta-wrap h2, .cta-wrap p                    { color:#F4EEE4 !important; }
+  .ft-name, .ft-brand p, .ft-col a, .ft-col p  { color:#F4EEE4 !important; }
+  .ft-col h4                                   { color:#C8A878 !important; }
+}
+
+/* NAV */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  padding:1.2rem 3rem;
+  display:flex; justify-content:space-between; align-items:center;
+  background-color:var(--linen);
+  border-bottom:1px solid rgba(61,32,16,0.08);
+}
+.nav-back {
+  font-family:'Cinzel',serif; font-size:0.65rem; font-weight:700;
+  letter-spacing:0.25em; color:var(--accent); text-transform:uppercase;
+  text-decoration:none; display:flex; align-items:center; gap:0.5rem;
+  transition:color .3s;
+}
+.nav-back:hover { color:var(--rust); }
+.nav-logo {
+  font-family:'Cinzel',serif; font-size:0.72rem; font-weight:700;
+  letter-spacing:0.35em; color:var(--rust); text-transform:uppercase;
+  text-decoration:none;
+}
+.nav-cta {
+  font-family:'Cinzel',serif; font-size:0.62rem; font-weight:700;
+  letter-spacing:0.25em; text-transform:uppercase;
+  color:var(--linen); background:var(--accent);
+  padding:0.65rem 1.5rem; text-decoration:none;
+  transition:background .3s;
+}
+.nav-cta:hover { background:var(--moss); }
+
+/* HERO — dark, immersive */
+.hero {
+  background-color:var(--ink);
+  min-height:90svh; padding:8rem 3rem 5rem;
+  display:flex; flex-direction:column;
+  justify-content:flex-end;
+  position:relative; overflow:hidden;
+}
+.hero::before {
+  content:'';
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 70% 60% at 30% 30%, rgba(74,104,64,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(176,112,48,0.1) 0%, transparent 60%);
+}
+/* large botanical circle accent */
+.hero::after {
+  content:'';
+  position:absolute; right:-120px; top:-120px;
+  width:550px; height:550px; border-radius:50%;
+  border:1px solid rgba(74,104,64,0.2);
+}
+.hero-inner { max-width:900px; position:relative; z-index:2; }
+.eyebrow {
+  font-family:'Cinzel',serif; font-size:0.62rem; font-weight:700;
+  letter-spacing:0.45em; text-transform:uppercase;
+  color:var(--accent-light); display:block; margin-bottom:1.5rem;
+}
+.hero h1 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem, 8vw, 7rem);
+  font-weight:300; line-height:1; color:var(--linen);
+  margin-bottom:2rem;
+}
+.hero h1 em { font-style:italic; color:#A8C890; }
+.hero p {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.1rem, 2.5vw, 1.5rem);
+  font-style:italic; font-weight:300;
+  color:var(--parch); line-height:1.9;
+  max-width:600px; opacity:0.8;
+}
+.hero-line {
+  width:60px; height:1px; background:var(--accent-light);
+  opacity:0.4; margin:2.5rem 0;
+}
+
+/* INTRO */
+.intro-wrap { background-color:var(--linen); padding:6rem 3rem; }
+.intro-grid {
+  max-width:1000px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start;
+}
+.intro-grid h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3.2rem); font-weight:300;
+  color:var(--ink); line-height:1.2; margin-bottom:2rem;
+}
+.intro-grid p { font-size:0.92rem; line-height:2; color:var(--bark); margin-bottom:1.2rem; }
+.intro-aside {
+  padding:2.5rem; background:var(--accent-light);
+  border-left:3px solid var(--accent);
+}
+.intro-aside h4 {
+  font-family:'Cinzel',serif; font-size:0.62rem; font-weight:700;
+  letter-spacing:0.35em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:1.2rem;
+}
+.intro-aside ul { list-style:none; display:flex; flex-direction:column; gap:0.8rem; }
+.intro-aside li {
+  font-size:0.9rem; color:var(--bark); line-height:1.7;
+  padding-left:1.2rem; position:relative;
+}
+.intro-aside li::before {
+  content:'—'; position:absolute; left:0;
+  color:var(--accent); font-size:0.75rem;
+}
+
+/* WHAT */
+.what-wrap { background-color:var(--parch); padding:6rem 3rem; }
+.what-wrap .section-head { text-align:center; margin-bottom:4rem; }
+.what-wrap .section-head h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3.2rem); font-weight:300; color:var(--ink);
+}
+.what-grid {
+  max-width:1000px; margin:0 auto;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:2rem;
+}
+.what-item {
+  padding:2.5rem 2rem;
+  background:var(--linen);
+  border-top:2px solid var(--accent);
+  transition:transform .3s;
+}
+.what-item:hover { transform:translateY(-4px); }
+.what-item .num {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:2.5rem; color:var(--accent); opacity:0.3;
+  line-height:1; margin-bottom:1rem;
+}
+.what-item h3 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem; font-weight:400; color:var(--ink);
+  margin-bottom:0.8rem;
+}
+.what-item p { font-size:0.85rem; line-height:1.9; color:var(--bark); }
+
+/* PROCESS */
+.process-wrap { background-color:var(--ink); padding:6rem 3rem; }
+.process-wrap .section-head { text-align:center; margin-bottom:4rem; }
+.process-wrap .section-head .eyebrow { color:var(--sand); }
+.process-wrap .section-head h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3.2rem); font-weight:300; color:var(--linen);
+}
+.process-list {
+  max-width:800px; margin:0 auto;
+  display:flex; flex-direction:column;
+}
+.step {
+  display:grid; grid-template-columns:4rem 1fr;
+  gap:2rem; padding:2.2rem 0;
+  border-bottom:1px solid rgba(237,228,214,0.07);
+}
+.step:first-child { border-top:1px solid rgba(237,228,214,0.07); }
+.step-num {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:2.5rem; color:var(--accent-light); opacity:0.3;
+  line-height:1;
+}
+.step h3 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem; font-weight:400; color:var(--linen);
+  margin-bottom:0.5rem;
+}
+.step p { font-size:0.86rem; line-height:1.9; color:var(--linen); opacity:0.5; }
+
+/* FAQ */
+.faq-wrap { background-color:var(--linen); padding:6rem 3rem; }
+.faq-wrap .section-head { margin-bottom:3rem; }
+.faq-wrap .section-head h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3rem); font-weight:300; color:var(--ink);
+}
+.faq-inner { max-width:750px; }
+.faq-item {
+  padding:1.8rem 0;
+  border-bottom:1px solid rgba(61,32,16,0.1);
+}
+.faq-item:first-child { border-top:1px solid rgba(61,32,16,0.1); }
+.faq-item h4 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem; font-weight:400; color:var(--ink);
+  margin-bottom:0.7rem;
+}
+.faq-item p { font-size:0.88rem; line-height:1.9; color:var(--bark); }
+
+/* CTA */
+.cta-wrap {
+  background-color:var(--ink); padding:7rem 3rem;
+  text-align:center; position:relative; overflow:hidden;
+}
+.cta-wrap::before {
+  content:'';
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse 60% 60% at 50% 100%, rgba(74,104,64,0.15) 0%, transparent 65%);
+}
+.cta-inner { max-width:580px; margin:0 auto; position:relative; z-index:2; }
+.cta-inner .eyebrow { color:var(--sand); }
+.cta-inner h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3.2rem); font-weight:300;
+  color:var(--linen); margin:1.5rem 0 1rem; line-height:1.2;
+}
+.cta-inner p { font-size:0.9rem; line-height:2; color:var(--parch); opacity:0.75; margin-bottom:3rem; }
+.btns { display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap; }
+.btn-p {
+  font-family:'Cinzel',serif; font-size:0.64rem; font-weight:700;
+  letter-spacing:0.28em; text-transform:uppercase;
+  color:var(--ink); background:var(--accent-light);
+  border:none; padding:1.1rem 2.8rem;
+  cursor:pointer; text-decoration:none;
+  transition:background .3s, transform .2s;
+}
+.btn-p:hover { background:#C0D8A8; transform:translateY(-2px); }
+.btn-s {
+  font-family:'Cinzel',serif; font-size:0.64rem; font-weight:700;
+  letter-spacing:0.28em; text-transform:uppercase;
+  color:var(--linen); background:transparent;
+  border:1px solid rgba(237,228,214,0.3); padding:1.1rem 2.8rem;
+  cursor:pointer; text-decoration:none;
+  transition:border-color .3s, transform .2s;
+}
+.btn-s:hover { border-color:var(--sand); transform:translateY(-2px); }
+
+/* FOOTER */
+footer { background-color:var(--ink); padding:4rem 3rem 0; display:grid; grid-template-columns:1.3fr 1fr; gap:4rem; }
+.ft-name { font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--linen); font-weight:300; margin-bottom:0.8rem; display:block; }
+.ft-brand p { font-size:0.82rem; color:var(--linen); opacity:0.3; line-height:1.9; }
+.ft-col h4 { font-family:'Cinzel',serif; font-size:0.58rem; font-weight:700; letter-spacing:0.35em; text-transform:uppercase; color:var(--sand); margin-bottom:1.2rem; }
+.ft-col ul { list-style:none; display:flex; flex-direction:column; gap:0.65rem; }
+.ft-col a { font-size:0.82rem; color:var(--linen); opacity:0.35; text-decoration:none; display:block; transition:opacity .3s; }
+.ft-col a:hover { opacity:0.8; }
+.ft-col p { font-size:0.82rem; color:var(--linen); opacity:0.3; line-height:1.9; }
+.ft-bottom { background-color:var(--ink); padding:2rem 3rem; margin-top:4rem; border-top:1px solid rgba(237,228,214,0.06); display:flex; justify-content:space-between; align-items:center; }
+.ft-bottom p { font-size:0.68rem; color:var(--linen); opacity:0.2; }
+
+/* REVEAL */
+.reveal { opacity:0; transform:translateY(22px); transition:opacity .8s ease, transform .8s ease; }
+.reveal.vis { opacity:1; transform:translateY(0); }
+
+@keyframes riseIn { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+.hero-inner > * { opacity:0; animation:riseIn 1.2s ease forwards; }
+.hero-inner > *:nth-child(1){animation-delay:.2s}
+.hero-inner > *:nth-child(2){animation-delay:.4s}
+.hero-inner > *:nth-child(3){animation-delay:.6s}
+.hero-inner > *:nth-child(4){animation-delay:.8s}
+.hero-inner > *:nth-child(5){animation-delay:1s}
+
+@media(max-width:768px){
+  nav{padding:1.2rem 1.5rem;}
+  .hero{padding:7rem 1.5rem 4rem;}
+  .intro-wrap,.what-wrap,.process-wrap,.faq-wrap,.cta-wrap{padding:4rem 1.5rem;}
+  .intro-grid{grid-template-columns:1fr;gap:3rem;}
+  .what-grid{grid-template-columns:1fr;}
+  footer{grid-template-columns:1fr;padding:3rem 1.5rem 0;}
+  .ft-bottom{flex-direction:column;gap:0.5rem;text-align:center;padding:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-back" href="madre-y-agua.html">← All Offerings</a>
+  <a class="nav-logo" href="madre-y-agua.html">Madre y Agua</a>
+  <a class="nav-cta" href="mailto:hello@madreyagua.com?subject=Herbal%20Medicine%20Consultation">Book a Consultation</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">— Offering 01</span>
+    <h1>Herbal<br><em>Medicine</em></h1>
+    <div class="hero-line"></div>
+    <p>Plant-based care rooted in tradition and lived practice.<br>A personal relationship with the plants themselves.</p>
+  </div>
+</section>
+
+<section class="intro-wrap">
+  <div class="intro-grid">
+    <div class="reveal">
+      <span class="eyebrow" style="color:var(--accent);">— What This Is</span>
+      <h2>Healing through relationship with the plant world</h2>
+      <p>Herbal medicine at Madre y Agua is not a prescription — it is a conversation. Between your body, its patterns, and the plants that have long held knowledge of how to restore balance.</p>
+      <p>Each consultation is a space to be heard and to reconnect with your body's innate intelligence. Custom formulations are drawn from ancestral traditions, lived practice, and a deep personal relationship with the plants themselves.</p>
+    </div>
+    <div class="intro-aside reveal">
+      <h4>This offering includes</h4>
+      <ul>
+        <li>1:1 Intake Consultation (90 min)</li>
+        <li>Custom herbal formulation</li>
+        <li>Seasonal protocol & plant guide</li>
+        <li>Follow-up session (45 min)</li>
+        <li>Ongoing email support</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="what-wrap">
+  <div class="section-head reveal">
+    <span class="eyebrow" style="color:var(--accent);display:block;margin-bottom:1rem;">— Areas of Support</span>
+    <h2>What We Can Work With</h2>
+  </div>
+  <div class="what-grid">
+    <div class="what-item reveal">
+      <div class="num">01</div>
+      <h3>Digestive &amp; Gut Health</h3>
+      <p>Bloating, irregularity, inflammation, and the relationship between digestion and emotional wellbeing.</p>
+    </div>
+    <div class="what-item reveal">
+      <div class="num">02</div>
+      <h3>Hormonal &amp; Cyclical Balance</h3>
+      <p>Supporting the menstrual cycle, perimenopause, fertility, and returning rhythm to the body.</p>
+    </div>
+    <div class="what-item reveal">
+      <div class="num">03</div>
+      <h3>Nervous System &amp; Stress</h3>
+      <p>Adaptogens, nervines, and grounding herbs for anxiety, burnout, and dysregulation.</p>
+    </div>
+    <div class="what-item reveal">
+      <div class="num">04</div>
+      <h3>Immunity &amp; Vitality</h3>
+      <p>Seasonal support, immune modulation, and restoring long-term resilience and energy.</p>
+    </div>
+    <div class="what-item reveal">
+      <div class="num">05</div>
+      <h3>Sleep &amp; Rest</h3>
+      <p>Herbs that restore the body's natural relationship with rest, darkness, and deep repair.</p>
+    </div>
+    <div class="what-item reveal">
+      <div class="num">06</div>
+      <h3>Skin &amp; External Care</h3>
+      <p>Plant-based support for the skin as a window into internal health and systemic patterns.</p>
+    </div>
+  </div>
+</section>
+
+<section class="process-wrap">
+  <div class="section-head reveal">
+    <span class="eyebrow">— How It Works</span>
+    <h2>The Process</h2>
+  </div>
+  <div class="process-list">
+    <div class="step reveal">
+      <span class="step-num">1</span>
+      <div>
+        <h3>Initial Inquiry</h3>
+        <p>You reach out and share a little about what you're seeking. We'll confirm a good fit and schedule your intake consultation.</p>
+      </div>
+    </div>
+    <div class="step reveal">
+      <span class="step-num">2</span>
+      <div>
+        <h3>Intake Consultation</h3>
+        <p>A 90-minute session where we explore your health history, patterns, constitution, and what your body is asking for.</p>
+      </div>
+    </div>
+    <div class="step reveal">
+      <span class="step-num">3</span>
+      <div>
+        <h3>Custom Formulation</h3>
+        <p>Your formula is crafted from whole herbs — tinctures, teas, or powders — tailored to your specific needs and season.</p>
+      </div>
+    </div>
+    <div class="step reveal">
+      <span class="step-num">4</span>
+      <div>
+        <h3>Follow-Up &amp; Refinement</h3>
+        <p>We check in after 4–6 weeks to assess, adjust, and deepen the protocol as your body responds and shifts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-wrap">
+  <div class="section-head reveal">
+    <span class="eyebrow" style="color:var(--accent);display:block;margin-bottom:1rem;">— Common Questions</span>
+    <h2>Frequently Asked</h2>
+  </div>
+  <div class="faq-inner">
+    <div class="faq-item reveal">
+      <h4>Do I need prior experience with herbal medicine?</h4>
+      <p>Not at all. This work meets you exactly where you are — whether you're brand new to plants or have been working with them for years.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h4>Are consultations in-person or virtual?</h4>
+      <p>Both options are available. Virtual consultations are held via video call. Formulations can be shipped or arranged for local pickup.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h4>Can this work alongside conventional medicine?</h4>
+      <p>Yes. Herbal medicine is a complement to, not a replacement for, medical care. We'll always discuss any medications or conditions in your intake.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h4>How long until I notice results?</h4>
+      <p>Herbs work with the body's own rhythms — most people notice shifts within 2–4 weeks, with deeper changes emerging over 1–3 months of consistent practice.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-wrap">
+  <div class="cta-inner reveal">
+    <span class="eyebrow">— Begin Here</span>
+    <h2>Ready to work with the plants?</h2>
+    <p>Reach out to schedule your intake consultation or to ask any questions before booking.</p>
+    <div class="btns">
+      <a href="mailto:hello@madreyagua.com?subject=Herbal%20Medicine%20Consultation" class="btn-p">Book a Consultation</a>
+      <a href="madre-y-agua.html#offerings" class="btn-s">View All Offerings</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-brand reveal">
+    <span class="ft-name">Madre y Agua</span>
+    <p>A living body of work rooted in the remembrance of relationship — between body and earth, nourishment and ritual, creation and care.</p>
+  </div>
+  <div class="ft-col reveal">
+    <h4>Other Offerings</h4>
+    <ul>
+      <li><a href="culinary-care.html">Ancestral Food &amp; Culinary Care</a></li>
+      <li><a href="ritual-arts.html">Ritual &amp; Feminine Arts</a></li>
+      <li><a href="educational-spaces.html">Educational Spaces</a></li>
+      <li><a href="madre-y-agua.html">Back to Home</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="ft-bottom">
+  <p>© 2025 Madre y Agua · All rights reserved.</p>
+  <p>hello@madreyagua.com</p>
+</div>
+
+<script>
+  const obs = new IntersectionObserver((e) => {
+    e.forEach((el,i) => { if(el.isIntersecting){ setTimeout(()=>el.target.classList.add('vis'),i*70); obs.unobserve(el.target); }});
+  }, {threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
