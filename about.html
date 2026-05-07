@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#F4EEE4">
+<title>About — Madre y Agua</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;700&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1C1008; --bark:#3D2010; --rust:#C84B18; --sand:#C8A878;
+  --linen:#F4EEE4; --parch:#EDE4D6; --cream-dark:#E3D2B8;
+  --sage:#7A8A68; --moss:#4A5838;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;color-scheme:light;background:var(--linen);}
+body{font-family:'Jost',sans-serif;font-weight:300;color:var(--ink);background-color:var(--linen);overflow-x:hidden;-webkit-text-size-adjust:100%;}
+
+@media(prefers-color-scheme:dark){
+  html,body{background-color:#F4EEE4!important;color:#1C1008!important;}
+  nav{background-color:#F4EEE4!important;}
+  .hero{background-color:#1C1008!important;}
+  .intro-wrap,.values-wrap,.cta-wrap{background-color:#F4EEE4!important;}
+  .intro-wrap h2,.values-wrap h2,.cta-wrap h2{color:#1C1008!important;}
+  .intro-wrap p,.values-wrap p,.cta-wrap p{color:#3D2010!important;}
+  .statement-band{background-color:#1C1008!important;}
+  .statement-band blockquote{color:#F4EEE4!important;}
+  .placeholder-note{background-color:#EDE4D6!important;color:#3D2010!important;}
+  .parch-band{background-color:#EDE4D6!important;}
+  .parch-band h2{color:#1C1008!important;}
+  .parch-band p{color:#3D2010!important;}
+  footer,.ft-bottom{background-color:#1C1008!important;}
+  .ft-name,.ft-brand p,.ft-col a,.ft-col p{color:#F4EEE4!important;}
+}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;background-color:var(--linen);border-bottom:1px solid rgba(61,32,16,0.08);}
+.nav-back{font-family:'Cinzel',serif;font-size:0.65rem;font-weight:700;letter-spacing:0.25em;color:var(--rust);text-transform:uppercase;text-decoration:none;transition:color .3s;}
+.nav-back:hover{color:var(--bark);}
+.nav-logo{font-family:'Cinzel',serif;font-size:0.72rem;font-weight:700;letter-spacing:0.35em;color:var(--rust);text-transform:uppercase;text-decoration:none;}
+.nav-cta{font-family:'Cinzel',serif;font-size:0.62rem;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--linen);background:var(--ink);padding:0.65rem 1.5rem;text-decoration:none;transition:background .3s;}
+.nav-cta:hover{background:var(--rust);}
+
+/* HERO */
+.hero{background-color:var(--ink);min-height:88svh;padding:8rem 3rem 5rem;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 25% 30%,rgba(200,72,24,0.12) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 80% 80%,rgba(122,138,104,0.1) 0%,transparent 55%);}
+.hero::after{content:'';position:absolute;right:-80px;top:10%;width:450px;height:450px;border-radius:50%;border:1px solid rgba(200,72,24,0.15);}
+.hero-inner{max-width:850px;position:relative;z-index:2;}
+.eyebrow{font-family:'Cinzel',serif;font-size:0.62rem;font-weight:700;letter-spacing:0.45em;text-transform:uppercase;color:var(--sand);display:block;margin-bottom:1.5rem;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,7rem);font-weight:300;line-height:1;color:var(--linen);margin-bottom:2rem;}
+.hero h1 em{font-style:italic;color:var(--sand);}
+.hero-line{width:60px;height:1px;background:var(--sand);opacity:0.4;margin:2.5rem 0;}
+.hero p{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.5vw,1.45rem);font-style:italic;font-weight:300;color:var(--parch);line-height:1.9;max-width:600px;opacity:0.82;}
+
+/* PLACEHOLDER NOTE — editor guidance */
+.placeholder-note{
+  background:#FFF8E8;border-left:3px solid var(--sand);
+  padding:1rem 1.5rem;margin:2rem 0;
+  font-size:0.82rem;line-height:1.7;color:var(--bark);
+  font-style:italic;
+}
+.placeholder-note strong{font-style:normal;color:var(--rust);}
+
+/* INTRO — the personal story */
+.intro-wrap{background-color:var(--linen);padding:7rem 3rem;}
+.intro-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:7rem;align-items:start;}
+.intro-inner .eyebrow{color:var(--rust);}
+.intro-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;color:var(--ink);line-height:1.25;margin-bottom:2rem;}
+.intro-inner p{font-size:0.92rem;line-height:2;color:var(--bark);margin-bottom:1.2rem;}
+.portrait-placeholder{
+  aspect-ratio:3/4;
+  background:var(--cream-dark);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:1rem;text-align:center;
+  padding:2rem;
+}
+.portrait-placeholder .icon{font-size:2rem;opacity:0.3;}
+.portrait-placeholder p{font-size:0.78rem;color:var(--bark);opacity:0.5;line-height:1.6;font-style:italic;}
+
+/* STATEMENT BAND */
+.statement-band{background-color:var(--ink);padding:5rem 3rem;text-align:center;position:relative;overflow:hidden;}
+.statement-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 100%,rgba(200,72,24,0.1) 0%,transparent 65%);pointer-events:none;}
+.statement-band blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;font-style:italic;color:var(--linen);line-height:1.35;max-width:900px;margin:0 auto;position:relative;z-index:2;}
+.statement-band blockquote em{color:var(--sand);}
+
+/* LINEAGE / TRAINING */
+.parch-band{background-color:var(--parch);padding:7rem 3rem;}
+.parch-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;}
+.parch-inner .eyebrow{color:var(--rust);}
+.parch-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--ink);line-height:1.25;margin-bottom:2rem;}
+.parch-inner p{font-size:0.92rem;line-height:2;color:var(--bark);margin-bottom:1.2rem;}
+.training-list{display:flex;flex-direction:column;gap:0;}
+.training-item{padding:1.5rem 0;border-bottom:1px solid rgba(61,32,16,0.12);}
+.training-item:first-child{border-top:1px solid rgba(61,32,16,0.12);}
+.training-item h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:0.3rem;}
+.training-item p{font-size:0.82rem;color:var(--bark);margin:0;line-height:1.7;}
+
+/* VALUES */
+.values-wrap{background-color:var(--linen);padding:7rem 3rem;}
+.values-head{text-align:center;margin-bottom:4rem;}
+.values-head h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--ink);}
+.values-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:rgba(61,32,16,0.08);}
+.value-item{padding:3rem;background:var(--linen);}
+.value-item h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--ink);margin-bottom:0.8rem;}
+.value-item p{font-size:0.88rem;line-height:1.95;color:var(--bark);}
+.value-item .val-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2rem;color:var(--rust);opacity:0.2;margin-bottom:1rem;line-height:1;}
+
+/* CTA */
+.cta-wrap{background-color:var(--ink);padding:7rem 3rem;text-align:center;position:relative;overflow:hidden;}
+.cta-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 60% at 50% 100%,rgba(200,72,24,0.12) 0%,transparent 65%);pointer-events:none;}
+.cta-inner{max-width:580px;margin:0 auto;position:relative;z-index:2;}
+.cta-inner .eyebrow{color:var(--sand);}
+.cta-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--linen);margin:1.5rem 0 1rem;line-height:1.2;}
+.cta-inner p{font-size:0.9rem;line-height:2;color:var(--parch);opacity:0.75;margin-bottom:3rem;}
+.btns{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;}
+.btn-p{font-family:'Cinzel',serif;font-size:0.64rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--ink);background:var(--sand);border:none;padding:1.1rem 2.8rem;cursor:pointer;text-decoration:none;transition:background .3s,transform .2s;}
+.btn-p:hover{background:var(--linen);transform:translateY(-2px);}
+.btn-s{font-family:'Cinzel',serif;font-size:0.64rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--linen);background:transparent;border:1px solid rgba(237,228,214,0.3);padding:1.1rem 2.8rem;cursor:pointer;text-decoration:none;transition:border-color .3s,transform .2s;}
+.btn-s:hover{border-color:var(--sand);transform:translateY(-2px);}
+
+footer{background-color:var(--ink);padding:4rem 3rem 0;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:4rem;}
+.ft-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--linen);font-weight:300;margin-bottom:0.8rem;display:block;}
+.ft-brand p{font-size:0.82rem;color:var(--linen);opacity:0.3;line-height:1.9;}
+.ft-col h4{font-family:'Cinzel',serif;font-size:0.58rem;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;color:var(--sand);margin-bottom:1.2rem;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:0.65rem;}
+.ft-col a{font-size:0.82rem;color:var(--linen);opacity:0.35;text-decoration:none;display:block;transition:opacity .3s;}
+.ft-col a:hover{opacity:0.8;}
+.ft-col p{font-size:0.82rem;color:var(--linen);opacity:0.3;line-height:1.9;}
+.ft-bottom{background-color:var(--ink);padding:2rem 3rem;margin-top:4rem;border-top:1px solid rgba(237,228,214,0.06);display:flex;justify-content:space-between;}
+.ft-bottom p{font-size:0.68rem;color:var(--linen);opacity:0.2;}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.vis{opacity:1;transform:translateY(0);}
+@keyframes riseIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.hero-inner>*{opacity:0;animation:riseIn 1.2s ease forwards;}
+.hero-inner>*:nth-child(1){animation-delay:.2s}.hero-inner>*:nth-child(2){animation-delay:.4s}.hero-inner>*:nth-child(3){animation-delay:.6s}.hero-inner>*:nth-child(4){animation-delay:.8s}
+@media(max-width:768px){nav{padding:1.2rem 1.5rem;}.hero{padding:7rem 1.5rem 4rem;}.intro-wrap,.parch-band,.values-wrap,.cta-wrap{padding:5rem 1.5rem;}.intro-inner,.parch-inner{grid-template-columns:1fr;gap:3rem;}.values-grid{grid-template-columns:1fr;}footer{grid-template-columns:1fr;padding:3rem 1.5rem 0;}.ft-bottom{flex-direction:column;gap:0.5rem;padding:1.5rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-back" href="index.html">← Home</a>
+  <a class="nav-logo" href="index.html">Madre y Agua</a>
+  <a class="nav-cta" href="index.html#offerings">Offerings</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">— The Person Behind the Work</span>
+    <h1>About<br><em>Nichole</em></h1>
+    <div class="hero-line"></div>
+    <p>Practitioner, cook, ceremonialist.<br>Rooted in ancestral tradition. Present in daily life.</p>
+  </div>
+</section>
+
+<section class="intro-wrap">
+  <div class="intro-inner">
+    <div class="reveal">
+      <span class="eyebrow">— Her Story</span>
+      <h2>This work began long before it had a name</h2>
+
+      <div class="placeholder-note">
+        <strong>✏️ Fill in here:</strong> Write 2–3 paragraphs in your own voice about how you came to this work. Where did it start? What drew you to plants, food, ritual? What happened in your own life that made this real for you? This is where people connect with you as a person.
+      </div>
+
+      <p>Madre y Agua is not an idea Nichole invented — it is a remembering. A gathering of threads that were always present: in the kitchen of her childhood, in the plants that grew near the places she loved, in the body that asked to be listened to.</p>
+      <p>The work deepened through years of study, practice, and lived experience — and through the understanding that the most important knowledge does not come only from books, but from relationship. With the land, with the body, with the community of people who have carried this wisdom forward.</p>
+
+      <div class="placeholder-note">
+        <strong>✏️ Fill in here:</strong> Add 1–2 sentences about where you're based and where you work — local, traveling, virtual, retreat locations, etc.
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="portrait-placeholder">
+        <div class="icon">◯</div>
+        <p>Add your portrait photo here.<br>A warm, natural image works best — outdoors, in the kitchen, or with plants.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="statement-band">
+  <blockquote class="reveal">
+    "I am not here to be your expert.<br>
+    I am here to walk alongside you<br>
+    back toward what you <em>already know.</em>"
+  </blockquote>
+</div>
+
+<section class="parch-band">
+  <div class="parch-inner">
+    <div class="reveal">
+      <span class="eyebrow">— Lineage &amp; Training</span>
+      <h2>Where this knowledge comes from</h2>
+      <p>The practices held within Madre y Agua are drawn from multiple lineages — ancestral, formal, and experiential. This work honors its sources and does not claim sole ownership of what has been passed down through communities and generations.</p>
+
+      <div class="placeholder-note">
+        <strong>✏️ Fill in here:</strong> Add any additional context about your relationship to the traditions you work with — cultural lineage, teachers, personal study, lived experience in community.
+      </div>
+    </div>
+    <div class="training-list reveal">
+      <div class="training-item">
+        <h4>Herbal Medicine</h4>
+        <div class="placeholder-note" style="margin:0.5rem 0 0;">
+          <strong>✏️</strong> Add your herbal training, certifications, teachers, or apprenticeships here.
+        </div>
+      </div>
+      <div class="training-item">
+        <h4>Culinary &amp; Food Traditions</h4>
+        <div class="placeholder-note" style="margin:0.5rem 0 0;">
+          <strong>✏️</strong> Add your culinary background — training, cultural food lineage, chefs or traditions you've studied with.
+        </div>
+      </div>
+      <div class="training-item">
+        <h4>Ritual &amp; Ceremonial Practice</h4>
+        <div class="placeholder-note" style="margin:0.5rem 0 0;">
+          <strong>✏️</strong> Add your ceremonial training, teachers, lineages, or communities of practice.
+        </div>
+      </div>
+      <div class="training-item">
+        <h4>Other Relevant Training</h4>
+        <div class="placeholder-note" style="margin:0.5rem 0 0;">
+          <strong>✏️</strong> Any other certifications, education, or lived experience relevant to the work.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="values-wrap">
+  <div class="values-head reveal">
+    <span class="eyebrow" style="color:var(--rust);display:block;margin-bottom:1rem;">— How This Work Is Held</span>
+    <h2>The Guiding Principles</h2>
+  </div>
+  <div class="values-grid">
+    <div class="value-item reveal">
+      <div class="val-num">01</div>
+      <h3>Relational, Not Transactional</h3>
+      <p>Every offering is designed to build relationship — between you and your body, between you and the plants, between practitioner and client. Not a service rendered, but a collaboration entered into.</p>
+    </div>
+    <div class="value-item reveal">
+      <div class="val-num">02</div>
+      <h3>Ancestral Without Being Extractive</h3>
+      <p>The traditions this work draws from are honored, credited, and held with humility. The goal is to remember and share — not to commodify or appropriate.</p>
+    </div>
+    <div class="value-item reveal">
+      <div class="val-num">03</div>
+      <h3>Grounded in Lived Experience</h3>
+      <p>This is not theoretical work. Everything offered has been practiced, embodied, and tested against real life — Nichole's own and that of the people she has worked with.</p>
+    </div>
+    <div class="value-item reveal">
+      <div class="val-num">04</div>
+      <h3>Accessible Without Being Watered Down</h3>
+      <p>The work is made accessible not by simplifying what is complex, but by meeting people where they are — without prerequisites, without gatekeeping.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-wrap">
+  <div class="cta-inner reveal">
+    <span class="eyebrow">— Work Together</span>
+    <h2>Ready to begin?</h2>
+    <p>Explore the offerings or reach out directly — Nichole reads every message personally.</p>
+    <div class="btns">
+      <a href="index.html#offerings" class="btn-p">See All Offerings</a>
+      <a href="mailto:hello@madreyagua.com" class="btn-s">Send a Message</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-brand reveal">
+    <span class="ft-name">Madre y Agua</span>
+    <p>A living body of work rooted in the remembrance of relationship — between body and earth, nourishment and ritual, creation and care.</p>
+  </div>
+  <div class="ft-col reveal">
+    <h4>Offerings</h4>
+    <ul>
+      <li><a href="herbal-medicine.html">Herbal Medicine</a></li>
+      <li><a href="culinary-care.html">Ancestral Food &amp; Culinary Care</a></li>
+      <li><a href="ritual-arts.html">Ritual &amp; Feminine Arts</a></li>
+      <li><a href="educational-spaces.html">Educational Spaces</a></li>
+    </ul>
+  </div>
+  <div class="ft-col reveal">
+    <h4>Explore</h4>
+    <ul>
+      <li><a href="philosophy.html">Philosophy</a></li>
+      <li><a href="retreats.html">Retreats</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="index.html">Home</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="ft-bottom">
+  <p>© 2025 Madre y Agua · All rights reserved.</p>
+  <p>hello@madreyagua.com</p>
+</div>
+
+<script>
+  const obs=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add('vis'),i*70);obs.unobserve(el.target);}});},{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

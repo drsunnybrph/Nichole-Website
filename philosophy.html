@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#F4EEE4">
+<title>Philosophy — Madre y Agua</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;700&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1C1008;--bark:#3D2010;--rust:#C84B18;--sand:#C8A878;--linen:#F4EEE4;--parch:#EDE4D6;--sage:#7A8A68;--moss:#4A5838;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;color-scheme:light;background:var(--linen);}
+body{font-family:'Jost',sans-serif;font-weight:300;color:var(--ink);background-color:var(--linen);overflow-x:hidden;-webkit-text-size-adjust:100%;}
+@media(prefers-color-scheme:dark){html,body{background-color:#F4EEE4!important;color:#1C1008!important;}nav{background-color:#F4EEE4!important;}.hero,.dark-section,.cta-wrap{background-color:#1C1008!important;}.light-section{background-color:#F4EEE4!important;}.light-section h2,.light-section h3{color:#1C1008!important;}.light-section p{color:#3D2010!important;}.parch-section{background-color:#EDE4D6!important;}.parch-section h2{color:#1C1008!important;}.parch-section p{color:#3D2010!important;}footer,.ft-bottom{background-color:#1C1008!important;}.ft-name,.ft-brand p,.ft-col a,.ft-col p{color:#F4EEE4!important;}}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;background-color:var(--linen);border-bottom:1px solid rgba(61,32,16,0.08);}
+.nav-back{font-family:'Cinzel',serif;font-size:0.65rem;font-weight:700;letter-spacing:0.25em;color:var(--rust);text-transform:uppercase;text-decoration:none;transition:color .3s;}
+.nav-back:hover{color:var(--bark);}
+.nav-logo{font-family:'Cinzel',serif;font-size:0.72rem;font-weight:700;letter-spacing:0.35em;color:var(--rust);text-transform:uppercase;text-decoration:none;}
+.nav-cta{font-family:'Cinzel',serif;font-size:0.62rem;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--linen);background:var(--ink);padding:0.65rem 1.5rem;text-decoration:none;transition:background .3s;}
+.nav-cta:hover{background:var(--rust);}
+
+/* HERO */
+.hero{background-color:var(--ink);min-height:80svh;padding:8rem 3rem 5rem;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 50% 20%,rgba(122,138,104,0.15) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 80% 85%,rgba(200,168,120,0.08) 0%,transparent 55%);}
+.hero-inner{max-width:850px;position:relative;z-index:2;}
+.eyebrow{font-family:'Cinzel',serif;font-size:0.62rem;font-weight:700;letter-spacing:0.45em;text-transform:uppercase;color:var(--sand);display:block;margin-bottom:1.5rem;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,7rem);font-weight:300;line-height:1;color:var(--linen);margin-bottom:2rem;}
+.hero h1 em{font-style:italic;color:var(--sand);}
+.hero-line{width:60px;height:1px;background:var(--sand);opacity:0.35;margin:2.5rem 0;}
+.hero p{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.5vw,1.45rem);font-style:italic;font-weight:300;color:var(--parch);line-height:1.9;max-width:600px;opacity:0.82;}
+
+/* MISSION */
+.light-section{background-color:var(--linen);padding:7rem 3rem;}
+.section-inner{max-width:900px;margin:0 auto;}
+.section-inner .eyebrow{color:var(--rust);}
+.section-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--ink);line-height:1.25;margin-bottom:2.5rem;}
+.section-inner p{font-size:0.95rem;line-height:2.1;color:var(--bark);margin-bottom:1.4rem;max-width:750px;}
+.section-inner p.large{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-style:italic;font-weight:300;color:var(--ink);line-height:1.7;margin-bottom:2rem;}
+
+/* PRINCIPLES — dark */
+.dark-section{background-color:var(--ink);padding:7rem 3rem;position:relative;overflow:hidden;}
+.dark-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(122,138,104,0.08) 0%,transparent 65%);pointer-events:none;}
+.dark-inner{max-width:900px;margin:0 auto;position:relative;z-index:2;}
+.dark-inner .eyebrow{color:var(--sand);}
+.dark-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--linen);line-height:1.25;margin-bottom:3rem;}
+.prin-list{display:flex;flex-direction:column;}
+.prin-item{padding:2rem 0;border-bottom:1px solid rgba(237,228,214,0.08);display:grid;grid-template-columns:2rem 1fr;gap:2rem;align-items:start;}
+.prin-item:first-child{border-top:1px solid rgba(237,228,214,0.08);}
+.prin-dash{color:var(--sand);opacity:0.4;padding-top:0.4rem;}
+.prin-item p{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.5vw,1.5rem);font-style:italic;font-weight:300;color:var(--linen);line-height:1.6;}
+
+/* VISION */
+.parch-section{background-color:var(--parch);padding:7rem 3rem;}
+.parch-inner-wrap{max-width:900px;margin:0 auto;}
+.parch-inner-wrap .eyebrow{color:var(--rust);}
+.parch-inner-wrap h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--ink);line-height:1.25;margin-bottom:2.5rem;}
+.parch-inner-wrap p{font-size:0.95rem;line-height:2.1;color:var(--bark);margin-bottom:1.4rem;max-width:750px;}
+
+/* APPROACH GRID */
+.approach-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:3rem;background:rgba(61,32,16,0.1);}
+.approach-item{padding:2.5rem;background:var(--parch);}
+.approach-item h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--ink);margin-bottom:0.6rem;}
+.approach-item p{font-size:0.85rem;line-height:1.9;color:var(--bark);}
+
+/* POEM SECTION */
+.poem-section{background-color:var(--ink);padding:9rem 3rem;text-align:center;position:relative;overflow:hidden;}
+.poem-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 60% at 30% 70%,rgba(200,72,24,0.08) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 75% 25%,rgba(122,138,104,0.08) 0%,transparent 55%);pointer-events:none;}
+.poem-inner{max-width:620px;margin:0 auto;position:relative;z-index:2;}
+.poem-inner .eyebrow{color:var(--sand);}
+.poem-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--linen);margin:1.5rem 0 3rem;}
+.poem-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.5vw,1.5rem);font-style:italic;font-weight:300;line-height:2.4;color:var(--parch);opacity:0.88;}
+
+/* CTA */
+.cta-wrap{background-color:var(--linen);padding:7rem 3rem;text-align:center;}
+.cta-wrap .eyebrow{color:var(--rust);display:block;margin-bottom:1.5rem;}
+.cta-wrap h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--ink);margin-bottom:1rem;}
+.cta-wrap p{font-size:0.9rem;line-height:2;color:var(--bark);max-width:420px;margin:0 auto 2.5rem;}
+.btns{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;}
+.btn-p{font-family:'Cinzel',serif;font-size:0.64rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--linen);background:var(--ink);border:none;padding:1.1rem 2.8rem;cursor:pointer;text-decoration:none;transition:background .3s,transform .2s;}
+.btn-p:hover{background:var(--rust);transform:translateY(-2px);}
+.btn-s{font-family:'Cinzel',serif;font-size:0.64rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--ink);background:transparent;border:1px solid rgba(61,32,16,0.25);padding:1.1rem 2.8rem;cursor:pointer;text-decoration:none;transition:border-color .3s,color .3s,transform .2s;}
+.btn-s:hover{border-color:var(--rust);color:var(--rust);transform:translateY(-2px);}
+
+footer{background-color:var(--ink);padding:4rem 3rem 0;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:4rem;}
+.ft-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--linen);font-weight:300;margin-bottom:0.8rem;display:block;}
+.ft-brand p{font-size:0.82rem;color:var(--linen);opacity:0.3;line-height:1.9;}
+.ft-col h4{font-family:'Cinzel',serif;font-size:0.58rem;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;color:var(--sand);margin-bottom:1.2rem;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:0.65rem;}
+.ft-col a{font-size:0.82rem;color:var(--linen);opacity:0.35;text-decoration:none;display:block;transition:opacity .3s;}
+.ft-col a:hover{opacity:0.8;}
+.ft-col p{font-size:0.82rem;color:var(--linen);opacity:0.3;line-height:1.9;}
+.ft-bottom{background-color:var(--ink);padding:2rem 3rem;margin-top:4rem;border-top:1px solid rgba(237,228,214,0.06);display:flex;justify-content:space-between;}
+.ft-bottom p{font-size:0.68rem;color:var(--linen);opacity:0.2;}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.vis{opacity:1;transform:translateY(0);}
+@keyframes riseIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.hero-inner>*{opacity:0;animation:riseIn 1.2s ease forwards;}
+.hero-inner>*:nth-child(1){animation-delay:.2s}.hero-inner>*:nth-child(2){animation-delay:.4s}.hero-inner>*:nth-child(3){animation-delay:.6s}.hero-inner>*:nth-child(4){animation-delay:.8s}
+@media(max-width:768px){nav{padding:1.2rem 1.5rem;}.hero{padding:7rem 1.5rem 4rem;}.light-section,.dark-section,.parch-section,.poem-section,.cta-wrap{padding:5rem 1.5rem;}.approach-grid{grid-template-columns:1fr;}footer{grid-template-columns:1fr;padding:3rem 1.5rem 0;}.ft-bottom{flex-direction:column;gap:0.5rem;padding:1.5rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-back" href="index.html">← Home</a>
+  <a class="nav-logo" href="index.html">Madre y Agua</a>
+  <a class="nav-cta" href="index.html#offerings">Offerings</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">— How We See the World</span>
+    <h1>Our<br><em>Philosophy</em></h1>
+    <div class="hero-line"></div>
+    <p>Not a set of beliefs to adopt — but a way of seeing that has always been available to return to.</p>
+  </div>
+</section>
+
+<section class="light-section">
+  <div class="section-inner reveal">
+    <span class="eyebrow">— Mission</span>
+    <h2>Why Madre y Agua exists</h2>
+    <p class="large">To guide individuals back into relationship with their bodies, their cycles, and the natural world through nourishment, plant medicine, and ritual practice.</p>
+    <p>We live in a time of profound disconnection — from our bodies, from the earth, from the ancestral knowledge that once guided how we ate, rested, healed, and gathered. Madre y Agua exists to soften that separation. Not through adding more, but through remembering what was always there.</p>
+    <p>This work does not ask you to overhaul your life. It asks you to bring a quality of attention to it — to the food you prepare, the plants you tend, the way you move through your cycles and seasons.</p>
+  </div>
+</section>
+
+<section class="dark-section">
+  <div class="dark-inner">
+    <span class="eyebrow reveal">— The Guiding Framework</span>
+    <h2 class="reveal">Four principles that hold everything</h2>
+    <div class="prin-list">
+      <div class="prin-item reveal"><span class="prin-dash">—</span><p>"The body is not something to fix, but something to tend."</p></div>
+      <div class="prin-item reveal"><span class="prin-dash">—</span><p>"Healing is not linear, but cyclical and responsive."</p></div>
+      <div class="prin-item reveal"><span class="prin-dash">—</span><p>"Care is not a product, but a practice."</p></div>
+      <div class="prin-item reveal"><span class="prin-dash">—</span><p>"The earth is not a resource, but a relative."</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="parch-section">
+  <div class="parch-inner-wrap">
+    <div class="reveal">
+      <span class="eyebrow">— Vision</span>
+      <h2>What we are building toward</h2>
+      <p>A body of work that honors ancestral wisdom while remaining grounded and accessible — where healing is not extracted or commodified, but experienced through presence, rhythm, and reciprocity.</p>
+      <p>Communities that remember how to care for themselves and one another through simple, intentional practices rooted in the earth. A world where the kitchen is medicine, the body is trusted, and ceremony is woven into ordinary life.</p>
+    </div>
+    <div class="approach-grid reveal">
+      <div class="approach-item">
+        <h4>Not Trend-Based, But Rooted</h4>
+        <p>Grounded in tradition and lived experience rather than what is current, popular, or newly packaged.</p>
+      </div>
+      <div class="approach-item">
+        <h4>Invitational, Not Prescriptive</h4>
+        <p>Each offering opens a door rather than delivering a protocol. You decide what you take with you.</p>
+      </div>
+      <div class="approach-item">
+        <h4>Embodied, Not Performative</h4>
+        <p>This work lives in the body, the kitchen, and the daily rhythm — not in aesthetics or appearances.</p>
+      </div>
+      <div class="approach-item">
+        <h4>Ancestral Without Being Extractive</h4>
+        <p>The traditions honored here are credited, held with care, and shared with humility and reciprocity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="poem-section">
+  <div class="poem-inner reveal">
+    <span class="eyebrow">— The Essence</span>
+    <h2>Madre y Agua is a return.</h2>
+    <p class="poem-text">
+      To the body as land.<br>
+      To nourishment as medicine.<br>
+      To care as something we practice,<br>
+      not purchase.<br><br>
+      It is the quiet remembering<br>
+      that what we need has always been here —<br>
+      in the kitchen, in the plants,<br>
+      in the water, in the way we tend.
+    </p>
+  </div>
+</section>
+
+<section class="cta-wrap">
+  <span class="eyebrow reveal">— Begin Here</span>
+  <h2 class="reveal">Ready to come into relationship?</h2>
+  <p class="reveal">Explore the offerings or reach out to begin a conversation about what you're seeking.</p>
+  <div class="btns reveal">
+    <a href="index.html#offerings" class="btn-p">Explore Offerings</a>
+    <a href="about.html" class="btn-s">About Nichole</a>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-brand reveal"><span class="ft-name">Madre y Agua</span><p>A living body of work rooted in the remembrance of relationship — between body and earth, nourishment and ritual, creation and care.</p></div>
+  <div class="ft-col reveal">
+    <h4>Offerings</h4>
+    <ul>
+      <li><a href="herbal-medicine.html">Herbal Medicine</a></li>
+      <li><a href="culinary-care.html">Ancestral Food &amp; Culinary Care</a></li>
+      <li><a href="ritual-arts.html">Ritual &amp; Feminine Arts</a></li>
+      <li><a href="educational-spaces.html">Educational Spaces</a></li>
+    </ul>
+  </div>
+  <div class="ft-col reveal">
+    <h4>Learn More</h4>
+    <ul>
+      <li><a href="about.html">About Nichole</a></li>
+      <li><a href="retreats.html">Retreats</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="index.html">Home</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="ft-bottom"><p>© 2025 Madre y Agua · All rights reserved.</p><p>hello@madreyagua.com</p></div>
+
+<script>
+  const obs=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add('vis'),i*70);obs.unobserve(el.target);}});},{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
