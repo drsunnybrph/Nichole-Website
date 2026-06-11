@@ -1,0 +1,703 @@
+/* ════════════════════════════════════════════════════════════
+   MADRE Y AGUA · Visual system v2 — per Nichole's design brief
+   Palette: Sangre / Tierra / Sol / Agua / Flor
+   Backgrounds: Warm Bone / Clay Rose / River Mist
+   Type: Cormorant Garamond · Libre Baskerville · Inter
+   Signature: the red thread (el hilo) running through the page
+   ════════════════════════════════════════════════════════════ */
+
+:root{
+  --sangre:#A60F0F;       /* memory, lineage, blood, devotion */
+  --tierra:#3D1E12;       /* earth, pottery, roots */
+  --sol:#E3B32A;          /* warmth, vitality — sparingly */
+  --agua:#59BEC2;         /* water, flow — motifs & dark-bg accents */
+  --agua-deep:#1F666C;    /* link-safe river teal for light backgrounds */
+  --flor:#F75B5C;         /* emergence — minimal */
+  --bone:#F5F0E7;         /* dominant background */
+  --clay:#C98F7D;         /* warm panel */
+  --mist:#E9F2F2;         /* water panel */
+  --bone-line:rgba(61,30,18,0.16);
+  --tierra-soft:rgba(61,30,18,0.72);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+html{
+  scroll-behavior:smooth;
+  color-scheme:light;
+  background:var(--bone);
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  font-weight:300;
+  font-size:1rem;
+  color:var(--tierra);
+  background-color:var(--bone);
+  overflow-x:hidden;
+  -webkit-text-size-adjust:100%;
+}
+
+/* Lock light rendering on devices in dark mode — lesson from build one.
+   Every section also declares its own background-color explicitly. */
+@media (prefers-color-scheme: dark){
+  html,body{background-color:#F5F0E7 !important;color:#3D1E12 !important;}
+  nav{background-color:#F5F0E7 !important;}
+}
+
+/* Film grain over everything — soft, warm, never sterile */
+body::after{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:999;mix-blend-mode:multiply;
+}
+
+::selection{background:var(--sol);color:var(--tierra);}
+
+.skip{
+  position:absolute;left:-9999px;top:0;
+  background:var(--tierra);color:var(--bone);
+  padding:0.8rem 1.4rem;z-index:1000;
+  font-size:0.8rem;letter-spacing:0.08em;
+}
+.skip:focus{left:0;}
+
+/* ── Shared vocabulary ─────────────────────────────────────── */
+
+.label{
+  font-family:'Inter',sans-serif;font-weight:500;
+  font-size:0.66rem;letter-spacing:0.32em;text-transform:uppercase;
+  color:var(--sangre);
+}
+
+.serif{font-family:'Cormorant Garamond',serif;}
+
+a{color:var(--agua-deep);}
+.prose a{
+  text-decoration:underline;text-underline-offset:4px;
+  text-decoration-thickness:1px;text-decoration-color:rgba(31,102,108,0.4);
+  transition:text-decoration-color .3s;
+}
+.prose a:hover{text-decoration-color:var(--sol);}
+
+:focus-visible{outline:2px solid var(--agua-deep);outline-offset:3px;}
+
+/* ── Nav ───────────────────────────────────────────────────── */
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background-color:var(--bone);
+  border-bottom:1px solid var(--bone-line);
+  padding:1.1rem 3rem;
+  display:flex;justify-content:space-between;align-items:center;
+}
+
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;font-weight:500;letter-spacing:0.12em;
+  color:var(--sangre);text-transform:uppercase;text-decoration:none;
+}
+
+.nav-links{display:flex;gap:2.6rem;list-style:none;align-items:center;}
+.nav-links a{
+  font-size:0.66rem;font-weight:400;letter-spacing:0.24em;text-transform:uppercase;
+  color:var(--tierra-soft);text-decoration:none;
+  transition:color .3s;
+}
+.nav-links a:hover{color:var(--sangre);}
+.nav-links a.nav-cta{
+  color:var(--bone);background:var(--tierra);
+  padding:0.62rem 1.4rem;
+  transition:background .3s;
+}
+.nav-links a.nav-cta:hover{background:var(--sangre);color:var(--bone);}
+
+/* ── Hero ──────────────────────────────────────────────────── */
+
+.hero{
+  background-color:var(--bone);
+  min-height:100svh;
+  padding:9rem 3rem 4rem;
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(0,0.85fr);
+  gap:4.5rem;align-items:center;
+  max-width:1320px;margin:0 auto;
+  position:relative;
+}
+
+.hero-copy{position:relative;z-index:2;}
+
+.hero-eyebrow{display:block;margin-bottom:2.2rem;}
+
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:300;
+  font-size:clamp(2.9rem,5.6vw,5.1rem);
+  line-height:1.08;letter-spacing:-0.01em;
+  color:var(--tierra);
+  margin-bottom:2.4rem;
+  max-width:13ch;
+}
+.hero h1 em{font-style:italic;color:var(--sangre);}
+
+.hero-question{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-weight:300;
+  font-size:clamp(1.15rem,2vw,1.4rem);
+  line-height:1.8;color:var(--tierra-soft);
+  max-width:46ch;
+  margin-bottom:2.6rem;
+}
+
+.hero-sub{
+  font-size:0.66rem;font-weight:500;letter-spacing:0.3em;
+  text-transform:uppercase;color:var(--agua-deep);
+}
+
+/* Hero artwork — arch/vessel frame. Placeholder layers until
+   Nichole's double-exposure portrait arrives; swap the inner
+   composition for an <img> and keep the frame. */
+.hero-art{position:relative;z-index:2;}
+
+.arch{
+  position:relative;
+  aspect-ratio:4/5.1;
+  border-radius:999px 999px 0 0;
+  border:1px solid rgba(61,30,18,0.3);
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 72% 18%, rgba(227,179,42,0.22), transparent 42%),
+    radial-gradient(circle at 18% 86%, rgba(166,15,15,0.13), transparent 58%),
+    radial-gradient(circle at 65% 70%, rgba(89,190,194,0.18), transparent 55%),
+    linear-gradient(178deg, var(--mist) 0%, #DCC7BB 58%, var(--clay) 100%);
+}
+.arch::after{
+  content:'';position:absolute;inset:10px;
+  border-radius:999px 999px 0 0;
+  border:1px solid rgba(61,30,18,0.18);
+  pointer-events:none;
+}
+.arch svg{position:absolute;inset:0;width:100%;height:100%;}
+
+.art-caption{
+  margin-top:1rem;
+  font-size:0.66rem;letter-spacing:0.06em;
+  color:var(--tierra-soft);
+  font-style:italic;
+}
+
+.hero-scroll{
+  position:absolute;left:3rem;bottom:2.2rem;
+  display:flex;align-items:center;gap:0.9rem;
+  z-index:2;
+}
+.hero-scroll span{
+  font-size:0.58rem;letter-spacing:0.4em;text-transform:uppercase;
+  color:var(--tierra-soft);
+}
+.scroll-line{
+  width:52px;height:1px;background:var(--sangre);opacity:0.5;
+  transform-origin:left;
+  animation:threadPulse 3s ease-in-out infinite;
+}
+@keyframes threadPulse{
+  0%,100%{transform:scaleX(0.55);opacity:0.3;}
+  50%{transform:scaleX(1);opacity:0.7;}
+}
+
+/* ── The thread divider (signature) ────────────────────────── */
+
+.thread{
+  display:block;
+  width:min(680px,82%);
+  margin:0 auto;
+  background-color:transparent;
+}
+.thread svg{display:block;width:100%;height:auto;}
+
+/* ── Statement band (Tierra) ───────────────────────────────── */
+
+.statement{
+  background-color:var(--tierra);
+  padding:7.5rem 3rem;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.statement::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 70% at 50% 110%, rgba(89,190,194,0.13) 0%, transparent 65%);
+  pointer-events:none;
+}
+.statement-inner{max-width:760px;margin:0 auto;position:relative;z-index:2;}
+.statement .label{color:var(--sol);display:block;margin-bottom:2.4rem;}
+.statement h2{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(2.6rem,5.5vw,4.4rem);
+  color:var(--bone);line-height:1.15;
+  margin-bottom:2.2rem;
+}
+.statement p{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(0.95rem,1.6vw,1.05rem);
+  line-height:2.05;color:var(--bone);opacity:0.82;
+  max-width:58ch;margin:0 auto;
+}
+
+/* ── Invocation / litany ───────────────────────────────────── */
+
+.invocation{
+  background-color:var(--bone);
+  padding:7.5rem 3rem 6rem;
+}
+.invocation-inner{
+  max-width:1060px;margin:0 auto;
+  display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);
+  gap:5.5rem;align-items:start;
+}
+.invocation .label{display:block;margin-bottom:1.6rem;}
+.invocation h2{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(1.9rem,3.4vw,2.8rem);line-height:1.25;
+  color:var(--tierra);
+  position:sticky;top:7rem;
+}
+
+.litany{list-style:none;}
+.litany li{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(1.35rem,2.4vw,1.8rem);
+  line-height:1.5;color:var(--tierra);
+  padding:1.15rem 0;
+  border-bottom:1px solid var(--bone-line);
+}
+.litany li:first-child{padding-top:0;}
+.litany li span{
+  font-style:italic;color:var(--sangre);
+}
+
+.invocation-close{
+  max-width:1060px;margin:4.5rem auto 0;
+  text-align:center;
+}
+.invocation-close p{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(1.2rem,2.2vw,1.55rem);
+  line-height:2;color:var(--tierra-soft);
+}
+.invocation-close p em{color:var(--agua-deep);font-style:italic;}
+
+/* ── Offerings ─────────────────────────────────────────────── */
+
+.offerings{
+  background-color:var(--bone);
+  padding:5rem 3rem 8rem;
+}
+.offerings-head{
+  max-width:1060px;margin:0 auto 4.5rem;
+}
+.offerings-head .label{display:block;margin-bottom:1.4rem;}
+.offerings-head h2{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(2.2rem,4.2vw,3.4rem);color:var(--tierra);
+}
+
+.off-list{
+  max-width:1060px;margin:0 auto;
+  border-top:1px solid var(--bone-line);
+}
+
+.off-item{
+  display:grid;
+  grid-template-columns:200px minmax(0,1fr) 60px;
+  gap:3rem;align-items:start;
+  padding:3.2rem 0;
+  border-bottom:1px solid var(--bone-line);
+  text-decoration:none;
+  transition:background-color .35s;
+  position:relative;
+}
+.off-item:hover{background-color:rgba(233,242,242,0.55);}
+
+.off-tag{
+  font-family:'Inter',sans-serif;font-weight:500;
+  font-size:0.62rem;letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--agua-deep);
+  padding-top:0.55rem;
+}
+
+.off-body h3{
+  font-family:'Cormorant Garamond',serif;font-weight:400;
+  font-size:clamp(1.5rem,2.6vw,2.05rem);
+  color:var(--tierra);line-height:1.2;
+  margin-bottom:0.9rem;
+  transition:color .3s;
+}
+.off-item:hover .off-body h3{color:var(--sangre);}
+.off-body p{
+  font-family:'Libre Baskerville',serif;
+  font-size:0.9rem;line-height:1.95;
+  color:var(--tierra-soft);
+  max-width:62ch;
+}
+
+.off-arrow{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;color:var(--sangre);
+  justify-self:end;padding-top:0.4rem;
+  opacity:0.35;transform:translateX(-6px);
+  transition:opacity .3s, transform .3s;
+}
+.off-item:hover .off-arrow{opacity:1;transform:translateX(0);}
+
+/* ── About (Clay Rose) ─────────────────────────────────────── */
+
+.about{
+  background-color:var(--clay);
+  padding:7.5rem 3rem;
+}
+.about-inner{
+  max-width:1060px;margin:0 auto;
+  display:grid;grid-template-columns:minmax(0,0.78fr) minmax(0,1.22fr);
+  gap:5rem;align-items:center;
+}
+
+.about-art .arch{
+  aspect-ratio:4/5.3;
+  border-color:rgba(61,30,18,0.4);
+  background:
+    radial-gradient(circle at 30% 25%, rgba(227,179,42,0.2), transparent 50%),
+    radial-gradient(circle at 75% 80%, rgba(166,15,15,0.16), transparent 55%),
+    linear-gradient(180deg, #EFE5D8 0%, var(--mist) 100%);
+}
+.about-art .art-caption{color:rgba(61,30,18,0.65);}
+
+.about-copy .label{display:block;margin-bottom:1.6rem;color:var(--sangre);}
+.about-copy h2{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(2.2rem,4vw,3.2rem);color:var(--tierra);
+  margin-bottom:1.8rem;
+}
+.about-lead{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(1.25rem,2.2vw,1.55rem);line-height:1.75;
+  color:var(--tierra);
+  margin-bottom:1.8rem;
+}
+.about-copy .prose p{
+  font-family:'Libre Baskerville',serif;
+  font-size:0.92rem;line-height:2;
+  color:var(--tierra);
+  margin-bottom:1.3rem;
+}
+.about-link{
+  display:inline-block;margin-top:0.8rem;
+  font-family:'Inter',sans-serif;font-weight:500;
+  font-size:0.68rem;letter-spacing:0.26em;text-transform:uppercase;
+  color:var(--tierra);text-decoration:none;
+  border-bottom:1px solid var(--sangre);
+  padding-bottom:0.45rem;
+  transition:color .3s,border-color .3s;
+}
+.about-link:hover{color:var(--sangre);border-color:var(--sol);}
+
+/* ── Stay connected (River Mist) ───────────────────────────── */
+
+.connect{
+  background-color:var(--mist);
+  padding:7.5rem 3rem;
+  position:relative;overflow:hidden;
+}
+.connect-water{
+  position:absolute;left:0;right:0;top:0;
+  width:100%;height:auto;opacity:0.5;pointer-events:none;
+}
+.connect-inner{
+  max-width:680px;margin:0 auto;text-align:center;
+  position:relative;z-index:2;
+}
+.connect .label{display:block;margin-bottom:1.8rem;color:var(--agua-deep);}
+.connect h2{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(2rem,4vw,3.1rem);color:var(--tierra);
+  line-height:1.25;margin-bottom:1.6rem;
+}
+.connect h2 em{font-style:italic;color:var(--agua-deep);}
+.connect-desc{
+  font-family:'Libre Baskerville',serif;
+  font-size:0.92rem;line-height:2;color:var(--tierra-soft);
+  margin-bottom:3rem;
+}
+
+/* Wire this form to a newsletter/form service before launch
+   (Buttondown, Mailchimp, Formspree, etc.) — see form-note. */
+.signup{
+  display:flex;gap:0;max-width:480px;margin:0 auto;
+  border:1px solid rgba(61,30,18,0.35);
+  background:var(--bone);
+}
+.signup input{
+  flex:1;min-width:0;
+  border:none;background:transparent;
+  padding:1.05rem 1.3rem;
+  font-family:'Inter',sans-serif;font-weight:300;font-size:0.88rem;
+  color:var(--tierra);
+}
+.signup input::placeholder{color:rgba(61,30,18,0.45);}
+.signup input:focus{outline:none;}
+.signup button{
+  border:none;cursor:pointer;
+  background:var(--tierra);color:var(--bone);
+  font-family:'Inter',sans-serif;font-weight:500;
+  font-size:0.64rem;letter-spacing:0.22em;text-transform:uppercase;
+  padding:1.05rem 1.7rem;
+  transition:background .3s;
+  white-space:nowrap;
+}
+.signup button:hover{background:var(--sangre);}
+.form-note{
+  display:none;margin-top:1.2rem;
+  font-size:0.78rem;color:var(--agua-deep);
+  font-style:italic;
+}
+.form-note.shown{display:block;}
+
+/* ── Closing benediction (Tierra) ──────────────────────────── */
+
+.closing{
+  background-color:var(--tierra);
+  padding:7.5rem 3rem 0;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.closing::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 55% 60% at 50% 0%, rgba(166,15,15,0.22) 0%, transparent 60%);
+  pointer-events:none;
+}
+.closing-inner{max-width:740px;margin:0 auto;position:relative;z-index:2;}
+.closing p.pre{
+  font-family:'Inter',sans-serif;font-weight:500;
+  font-size:0.64rem;letter-spacing:0.34em;text-transform:uppercase;
+  color:var(--sol);margin-bottom:2.4rem;
+}
+.closing h2{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(2rem,4.4vw,3.5rem);
+  line-height:1.3;color:var(--bone);
+}
+.closing h2 em{font-style:italic;color:var(--agua);}
+
+/* Woven band — slow-moving key phrases */
+.weave-wrap{
+  margin-top:6rem;
+  border-top:1px solid rgba(245,240,231,0.14);
+  border-bottom:1px solid rgba(245,240,231,0.14);
+  padding:1.5rem 0;
+  overflow:hidden;
+  position:relative;z-index:2;
+  background-color:var(--tierra);
+}
+.weave{
+  display:flex;gap:3.5rem;width:max-content;
+  animation:weave 80s linear infinite;
+}
+.weave span{
+  font-family:'Inter',sans-serif;font-weight:400;
+  font-size:0.66rem;letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--sol);white-space:nowrap;
+}
+.weave .sep{color:var(--agua);opacity:0.75;}
+@keyframes weave{to{transform:translateX(-50%);}}
+
+/* ── Footer (Tierra) ───────────────────────────────────────── */
+
+footer{
+  background-color:var(--tierra);
+  padding:5rem 3rem 0;
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  gap:4rem;
+  max-width:1320px;margin:0 auto;
+}
+.ft-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;font-weight:400;letter-spacing:0.1em;
+  color:var(--bone);text-transform:uppercase;
+  display:block;margin-bottom:1rem;
+}
+.ft-brand p{
+  font-family:'Libre Baskerville',serif;
+  font-size:0.84rem;line-height:1.95;
+  color:var(--bone);opacity:0.5;max-width:34ch;
+}
+.ft-col h4{
+  font-family:'Inter',sans-serif;font-weight:500;
+  font-size:0.6rem;letter-spacing:0.32em;text-transform:uppercase;
+  color:var(--sol);margin-bottom:1.4rem;
+}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:0.7rem;}
+.ft-col a{
+  font-size:0.84rem;color:var(--bone);opacity:0.55;
+  text-decoration:none;transition:opacity .3s,color .3s;
+}
+.ft-col a:hover{opacity:1;color:var(--agua);}
+
+.ft-bottom{
+  background-color:var(--tierra);
+  border-top:1px solid rgba(245,240,231,0.1);
+  margin-top:4.5rem;
+  padding:1.8rem 3rem;
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+}
+.ft-bottom p{font-size:0.68rem;color:var(--bone);opacity:0.35;letter-spacing:0.04em;}
+
+/* ── Reveal on scroll ──────────────────────────────────────── */
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease;}
+.reveal.vis{opacity:1;transform:translateY(0);}
+
+@keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.hero-copy>*{opacity:0;animation:riseIn 1.2s ease forwards;}
+.hero-copy>*:nth-child(1){animation-delay:.15s;}
+.hero-copy>*:nth-child(2){animation-delay:.3s;}
+.hero-copy>*:nth-child(3){animation-delay:.5s;}
+.hero-copy>*:nth-child(4){animation-delay:.7s;}
+.hero-art{opacity:0;animation:riseIn 1.4s ease forwards .45s;}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  .reveal{opacity:1;transform:none;transition:none;}
+  .hero-copy>*,.hero-art{opacity:1;animation:none;}
+  .weave{animation:none;}
+  .scroll-line{animation:none;}
+}
+
+/* ── Mobile ────────────────────────────────────────────────── */
+
+@media (max-width:880px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{gap:1.4rem;}
+  .nav-links li.nav-hide{display:none;}
+
+  .hero{
+    grid-template-columns:1fr;
+    padding:7.5rem 1.5rem 5.5rem;
+    gap:3.5rem;min-height:auto;
+  }
+  .hero h1{max-width:none;}
+  .hero-art{max-width:420px;width:100%;margin:0 auto;}
+  .hero-scroll{display:none;}
+
+  .statement{padding:5.5rem 1.5rem;}
+  .invocation{padding:5.5rem 1.5rem 4rem;}
+  .invocation-inner{grid-template-columns:1fr;gap:2.8rem;}
+  .invocation h2{position:static;}
+  .offerings{padding:3.5rem 1.5rem 5.5rem;}
+  .off-item{grid-template-columns:1fr;gap:0.9rem;padding:2.4rem 0;}
+  .off-tag{padding-top:0;}
+  .off-arrow{display:none;}
+  .about{padding:5.5rem 1.5rem;}
+  .about-inner{grid-template-columns:1fr;gap:3rem;}
+  .about-art{max-width:360px;margin:0 auto;width:100%;}
+  .connect{padding:5.5rem 1.5rem;}
+  .signup{flex-direction:column;border:none;background:transparent;gap:0.8rem;}
+  .signup input{border:1px solid rgba(61,30,18,0.35);background:var(--bone);}
+  .signup button{padding:1.05rem 1rem;}
+  .closing{padding:5.5rem 1.5rem 0;}
+  footer{grid-template-columns:1fr;gap:2.8rem;padding:4rem 1.5rem 0;}
+  .ft-bottom{flex-direction:column;text-align:center;padding:1.6rem 1.5rem;}
+}
+
+/* ════════════════════════════════════════════════════════════
+   SUBPAGE PATTERNS — shared across all interior pages
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Page hero (interior pages) ── */
+.page-hero{background-color:var(--bone);padding:10rem 3rem 5.5rem;}
+.page-hero-inner{max-width:1060px;margin:0 auto;}
+.page-hero .label{display:block;margin-bottom:2rem;}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.7rem,6.2vw,5.2rem);line-height:1.06;letter-spacing:-0.01em;color:var(--tierra);margin-bottom:2.1rem;max-width:18ch;}
+.page-hero h1 em{font-style:italic;color:var(--sangre);}
+.page-hero .lede{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(1.15rem,2vw,1.42rem);line-height:1.85;color:var(--tierra-soft);max-width:52ch;}
+
+/* ── Generic bands ── */
+.band{padding:6.5rem 3rem;}
+.band-inner{max-width:1060px;margin:0 auto;}
+.band-narrow{max-width:760px;margin:0 auto;}
+.bg-bone{background-color:var(--bone);}
+.bg-mist{background-color:var(--mist);}
+.bg-clay{background-color:var(--clay);}
+.band .label{display:block;margin-bottom:1.6rem;}
+.band-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.9rem,3.4vw,2.8rem);line-height:1.25;color:var(--tierra);margin-bottom:2.2rem;}
+.center{text-align:center;}
+
+/* ── Long-form editorial prose ── */
+.prose-long p{font-family:'Libre Baskerville',serif;font-size:0.95rem;line-height:2.1;color:var(--tierra);margin-bottom:1.5rem;max-width:64ch;}
+.prose-long p:last-child{margin-bottom:0;}
+.prose-long em{font-style:italic;}
+.center .prose-long p{margin-left:auto;margin-right:auto;}
+
+/* ── Stanza (poetic centered lines) ── */
+.stanza{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(1.25rem,2.3vw,1.65rem);line-height:2;color:var(--tierra);text-align:center;max-width:46ch;margin:0 auto;}
+.stanza em{color:var(--agua-deep);}
+
+/* ── Placards (museum-card grid) ── */
+.placards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;max-width:1060px;margin:0 auto;}
+.placards.two{grid-template-columns:repeat(2,1fr);max-width:920px;}
+.placard{background-color:var(--bone);border:1px solid var(--bone-line);padding:2.5rem 2.1rem;}
+.placard .tag{font-family:'Inter',sans-serif;font-weight:500;font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--agua-deep);display:block;margin-bottom:1.1rem;}
+.placard h3{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.35rem;line-height:1.3;color:var(--tierra);margin-bottom:0.8rem;}
+.placard p{font-family:'Libre Baskerville',serif;font-size:0.86rem;line-height:1.95;color:var(--tierra-soft);}
+.placard p:not(:last-child){margin-bottom:1rem;}
+
+/* ── Buttons & CTA band ── */
+.btn-row{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;}
+.btn{display:inline-block;font-family:'Inter',sans-serif;font-weight:500;font-size:0.66rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--bone);background:var(--tierra);padding:1.05rem 2.4rem;text-decoration:none;border:1px solid var(--tierra);transition:background .3s,border-color .3s;cursor:pointer;}
+.btn:hover{background:var(--sangre);border-color:var(--sangre);color:var(--bone);}
+.btn-ghost{display:inline-block;font-family:'Inter',sans-serif;font-weight:500;font-size:0.66rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--tierra);background:transparent;border:1px solid rgba(61,30,18,0.35);padding:1.05rem 2.4rem;text-decoration:none;transition:color .3s,border-color .3s;}
+.btn-ghost:hover{color:var(--sangre);border-color:var(--sangre);}
+.cta-band{background-color:var(--bone);padding:7rem 3rem;text-align:center;}
+.cta-band .label{display:block;margin-bottom:1.6rem;}
+.cta-band h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,3.8vw,3.1rem);color:var(--tierra);margin-bottom:1.3rem;}
+.cta-band p{font-family:'Libre Baskerville',serif;font-size:0.92rem;line-height:2;color:var(--tierra-soft);max-width:48ch;margin:0 auto 2.8rem;}
+
+/* ── Themes (wrapped pill row) ── */
+.themes{display:flex;flex-wrap:wrap;gap:0.9rem;justify-content:center;max-width:820px;margin:0 auto;}
+.theme{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.02rem;color:var(--tierra);border:1px solid var(--bone-line);background-color:var(--bone);padding:0.7rem 1.5rem;}
+
+/* ── Threads stack (About) ── */
+.threads-stack{list-style:none;text-align:center;}
+.threads-stack li{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(1.7rem,3.6vw,2.7rem);line-height:1.6;color:var(--tierra);}
+.threads-stack li::after{content:'.';color:var(--sangre);}
+
+/* ── Events (Gatherings) ── */
+.events-list{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:1.6rem;}
+.event-card{background-color:var(--bone);border:1px solid var(--bone-line);padding:2.3rem 2.5rem;display:grid;grid-template-columns:110px minmax(0,1fr);gap:2.2rem;align-items:start;}
+.event-date{text-align:center;border-right:1px solid var(--bone-line);padding-right:1.6rem;}
+.event-day{display:block;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2.6rem;line-height:1;color:var(--sangre);}
+.event-month{display:block;font-family:'Inter',sans-serif;font-weight:500;font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--tierra-soft);margin-top:0.5rem;}
+.event-host{font-family:'Inter',sans-serif;font-weight:500;font-size:0.6rem;letter-spacing:0.26em;text-transform:uppercase;display:inline-block;margin-bottom:0.85rem;}
+.host-mya{color:var(--sangre);}
+.host-com{color:var(--agua-deep);}
+.event-body h3{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.5rem;color:var(--tierra);margin-bottom:0.6rem;}
+.event-desc{font-family:'Libre Baskerville',serif;font-size:0.88rem;line-height:1.95;color:var(--tierra-soft);margin-bottom:0.9rem;}
+.event-meta{font-family:'Inter',sans-serif;font-weight:400;font-size:0.72rem;letter-spacing:0.08em;color:var(--tierra-soft);}
+.pill-example{display:inline-block;font-family:'Inter',sans-serif;font-weight:500;font-size:0.56rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--tierra);background:rgba(227,179,42,0.3);padding:0.3rem 0.7rem;margin-left:0.9rem;vertical-align:middle;}
+.event-empty{display:none;border:1px dashed rgba(61,30,18,0.3);padding:3.8rem 2rem;text-align:center;max-width:880px;margin:0 auto;}
+.event-empty p{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:1.3rem;line-height:1.8;color:var(--tierra-soft);}
+.archive-empty{border:1px dashed rgba(61,30,18,0.3);padding:3.8rem 2rem;text-align:center;}
+.archive-empty p.big{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:1.4rem;color:var(--tierra);margin-bottom:0.9rem;}
+.archive-empty p.small{font-family:'Libre Baskerville',serif;font-size:0.86rem;line-height:1.9;color:var(--tierra-soft);}
+
+/* ── Subpage responsive ── */
+@media (max-width:880px){
+  .page-hero{padding:7.5rem 1.5rem 3.5rem;}
+  .band{padding:4.5rem 1.5rem;}
+  .cta-band{padding:5rem 1.5rem;}
+  .placards,.placards.two{grid-template-columns:1fr;}
+  .event-card{grid-template-columns:1fr;gap:1.1rem;padding:1.8rem 1.5rem;}
+  .event-date{text-align:left;border-right:none;border-bottom:1px solid var(--bone-line);padding:0 0 1rem;}
+  .event-day{display:inline;font-size:1.8rem;margin-right:0.6rem;}
+  .event-month{display:inline;}
+}
