@@ -1,23 +1,37 @@
 /* ════════════════════════════════════════════════════════════
-   MADRE Y AGUA · Visual system v2 — per Nichole's design brief
-   Palette: Sangre / Tierra / Sol / Agua / Flor
-   Backgrounds: Warm Bone / Clay Rose / River Mist
+   MADRE Y AGUA · Visual system v3 — retuned to the mood-board palette
+   River Black · Deep Cacao · Clay · Burnt Sienna · Maize Gold ·
+   Tobacco · Indigo · Forest Green · Aged Paper
    Type: Cormorant Garamond · Libre Baskerville · Inter
-   Signature: the red thread (el hilo) running through the page
+   Signature: the thread (el hilo) — now warmed to oxblood/sienna
+   Token names are kept stable; values updated so every page repaints.
    ════════════════════════════════════════════════════════════ */
 
 :root{
-  --sangre:#A60F0F;       /* memory, lineage, blood, devotion */
-  --tierra:#3D1E12;       /* earth, pottery, roots */
-  --sol:#E3B32A;          /* warmth, vitality — sparingly */
-  --agua:#59BEC2;         /* water, flow — motifs & dark-bg accents */
-  --agua-deep:#1F666C;    /* link-safe river teal for light backgrounds */
-  --flor:#F75B5C;         /* emergence — minimal */
-  --bone:#F5F0E7;         /* dominant background */
-  --clay:#C98F7D;         /* warm panel */
-  --mist:#E9F2F2;         /* water panel */
-  --bone-line:rgba(61,30,18,0.16);
-  --tierra-soft:rgba(61,30,18,0.72);
+  /* Mood-board palette */
+  --riverblack:#1A1410;   /* near-black — nav, footer, dark bands */
+  --cacao:#3A2417;        /* deep cacao — primary text, dark panels */
+  --clay-deep:#A8663F;    /* clay / terracotta */
+  --sienna:#9E4A28;       /* burnt sienna — warm accent */
+  --maize:#D9A437;        /* maize gold — highlights, sparingly */
+  --tobacco:#6E4A2E;      /* tobacco — mid earth */
+  --indigo:#34507A;       /* indigo — motifs, accents on dark */
+  --indigo-deep:#26395C;  /* link-safe indigo on light grounds */
+  --forest:#3E4A30;       /* forest green — occasional accent */
+  --aged:#F1E8D5;         /* aged paper — dominant background */
+
+  /* Mapped to existing token names so all rules inherit the new palette */
+  --sangre:#8A3322;       /* the thread — oxblood/brick (lineage, blood) */
+  --tierra:#3A2417;       /* = cacao (text / roots) */
+  --sol:#D9A437;          /* = maize */
+  --agua:#34507A;         /* = indigo (was turquoise) — motifs, dark bands */
+  --agua-deep:#26395C;    /* = deep indigo — links on light (high contrast) */
+  --flor:#A8663F;         /* = clay (was coral) — minimal warmth */
+  --bone:#F1E8D5;         /* = aged paper (dominant background) */
+  --clay:#C2845E;         /* warm panel (Clay Rose → clay/terracotta) */
+  --mist:#E6E9E6;         /* soft river-stone panel (cool, faded) */
+  --bone-line:rgba(58,36,23,0.18);
+  --tierra-soft:rgba(58,36,23,0.72);
 }
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -41,8 +55,8 @@ body{
 /* Lock light rendering on devices in dark mode — lesson from build one.
    Every section also declares its own background-color explicitly. */
 @media (prefers-color-scheme: dark){
-  html,body{background-color:#F5F0E7 !important;color:#3D1E12 !important;}
-  nav{background-color:#F5F0E7 !important;}
+  html,body{background-color:#F1E8D5 !important;color:#3A2417 !important;}
+  nav{background-color:#1A1410 !important;}
 }
 
 /* Film grain over everything — soft, warm, never sterile */
@@ -87,31 +101,31 @@ a{color:var(--agua-deep);}
 
 nav{
   position:fixed;top:0;left:0;right:0;z-index:200;
-  background-color:var(--bone);
-  border-bottom:1px solid var(--bone-line);
+  background-color:var(--riverblack);
+  border-bottom:1px solid rgba(241,232,213,0.1);
   padding:1.1rem 3rem;
   display:flex;justify-content:space-between;align-items:center;
 }
 
 .nav-logo{
   font-family:'Cormorant Garamond',serif;
-  font-size:1.15rem;font-weight:500;letter-spacing:0.12em;
-  color:var(--sangre);text-transform:uppercase;text-decoration:none;
+  font-size:1.2rem;font-weight:500;letter-spacing:0.14em;
+  color:var(--aged);text-transform:uppercase;text-decoration:none;
 }
 
 .nav-links{display:flex;gap:2.6rem;list-style:none;align-items:center;}
 .nav-links a{
   font-size:0.66rem;font-weight:400;letter-spacing:0.24em;text-transform:uppercase;
-  color:var(--tierra-soft);text-decoration:none;
+  color:rgba(241,232,213,0.7);text-decoration:none;
   transition:color .3s;
 }
-.nav-links a:hover{color:var(--sangre);}
+.nav-links a:hover{color:var(--maize);}
 .nav-links a.nav-cta{
-  color:var(--bone);background:var(--tierra);
+  color:var(--aged);background:var(--sienna);
   padding:0.62rem 1.4rem;
-  transition:background .3s;
+  transition:background .3s,color .3s;
 }
-.nav-links a.nav-cta:hover{background:var(--sangre);color:var(--bone);}
+.nav-links a.nav-cta:hover{background:var(--maize);color:var(--cacao);}
 
 /* ── Hero ──────────────────────────────────────────────────── */
 
@@ -700,4 +714,221 @@ footer{
   .event-date{text-align:left;border-right:none;border-bottom:1px solid var(--bone-line);padding:0 0 1rem;}
   .event-day{display:inline;font-size:1.8rem;margin-right:0.6rem;}
   .event-month{display:inline;}
+}
+
+/* ════════════════════════════════════════════════════════════
+   v3 ADDITIONS — image-3 homepage direction + image-2 consultation
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Layered hero (image 3): full-bleed warm ground, centered
+   aged-paper clearing holds the tagline. Replace the gradient +
+   motif layer with Nichole's real hero collage/photograph. ── */
+.hero-v2{
+  position:relative;
+  min-height:100svh;
+  display:flex;align-items:center;justify-content:center;
+  padding:9rem 3rem 5rem;
+  background-color:var(--cacao);
+  overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;z-index:0;}
+.hero-bg .layer{position:absolute;inset:0;}
+.hero-bg .wash{
+  background:
+    radial-gradient(ellipse 55% 50% at 22% 30%, rgba(217,164,55,0.30), transparent 55%),
+    radial-gradient(ellipse 50% 55% at 82% 72%, rgba(158,74,40,0.34), transparent 60%),
+    radial-gradient(ellipse 60% 60% at 60% 18%, rgba(52,80,122,0.28), transparent 62%),
+    linear-gradient(160deg, #2A1A10 0%, #4A2C18 45%, #6E4A2E 100%);
+}
+.hero-bg svg{position:absolute;inset:0;width:100%;height:100%;opacity:0.5;}
+.hero-vignette{
+  position:absolute;inset:0;z-index:1;
+  background:radial-gradient(ellipse 70% 70% at 50% 50%, transparent 35%, rgba(26,20,16,0.55) 100%);
+  pointer-events:none;
+}
+.hero-clearing{
+  position:relative;z-index:2;
+  max-width:600px;text-align:center;
+  padding:4rem 3rem;
+}
+.hero-clearing::before{
+  content:'';position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(ellipse 70% 70% at 50% 50%, rgba(241,232,213,0.92) 0%, rgba(241,232,213,0.72) 55%, transparent 100%);
+}
+.hero-clearing .mark{display:block;margin:0 auto 1.8rem;width:42px;height:42px;}
+.hero-clearing h1{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(2.4rem,5vw,3.9rem);line-height:1.16;letter-spacing:-0.005em;
+  color:var(--cacao);text-transform:lowercase;
+  margin-bottom:1.8rem;
+}
+.hero-clearing h1 em{font-style:italic;color:var(--sienna);}
+.hero-clearing .lineage{
+  font-family:'Inter',sans-serif;font-weight:500;
+  font-size:0.66rem;letter-spacing:0.4em;text-transform:uppercase;
+  color:var(--indigo-deep);
+  margin-bottom:2.4rem;
+}
+.chev{display:inline-flex;flex-direction:column;align-items:center;gap:0.4rem;
+  text-decoration:none;color:var(--sienna);
+  font-size:0.56rem;letter-spacing:0.3em;text-transform:uppercase;}
+.chev svg{width:22px;height:22px;animation:bob 2.4s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
+
+/* ── Explore cards (image 3): image tiles w/ evocative label + EXPLORE.
+   Each .ex-media is a placeholder ground; drop a real <img> inside. ── */
+.explore{background-color:var(--riverblack);padding:0;}
+.explore-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:0;
+  border-top:1px solid rgba(241,232,213,0.08);
+}
+.ex-card{
+  position:relative;min-height:clamp(320px,38vw,440px);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:2.2rem 1.8rem;text-decoration:none;overflow:hidden;
+  border-right:1px solid rgba(241,232,213,0.08);
+}
+.ex-card:last-child{border-right:none;}
+.ex-media{position:absolute;inset:0;z-index:0;}
+.ex-media .ground{position:absolute;inset:0;}
+.ex-card:nth-child(1) .ground{background:linear-gradient(165deg,#3A2417,#6E4A2E);}
+.ex-card:nth-child(2) .ground{background:linear-gradient(165deg,#4A2C18,#9E4A28);}
+.ex-card:nth-child(3) .ground{background:linear-gradient(165deg,#26395C,#3E4A30);}
+.ex-card:nth-child(4) .ground{background:linear-gradient(165deg,#6E4A2E,#A8663F);}
+.ex-card:nth-child(5) .ground{background:linear-gradient(165deg,#2A1A10,#4A3420);}
+.ex-media svg{position:absolute;inset:0;width:100%;height:100%;opacity:0.4;}
+.ex-card::after{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top, rgba(26,20,16,0.85) 0%, rgba(26,20,16,0.25) 55%, rgba(26,20,16,0.15) 100%);
+}
+.ex-body{position:relative;z-index:2;}
+.ex-body .tag{
+  font-family:'Inter',sans-serif;font-weight:500;font-size:0.56rem;
+  letter-spacing:0.26em;text-transform:uppercase;color:var(--maize);
+  display:block;margin-bottom:0.7rem;
+}
+.ex-body h3{
+  font-family:'Cormorant Garamond',serif;font-weight:400;
+  font-size:clamp(1.3rem,1.8vw,1.6rem);line-height:1.18;color:var(--aged);
+  margin-bottom:1rem;
+}
+.ex-explore{
+  font-family:'Inter',sans-serif;font-weight:500;font-size:0.6rem;
+  letter-spacing:0.26em;text-transform:uppercase;color:var(--aged);
+  border-bottom:1px solid var(--sienna);padding-bottom:0.4rem;
+  transition:border-color .3s;
+}
+.ex-card:hover .ex-explore{border-color:var(--maize);}
+.ex-card:hover .ex-media{transform:scale(1.03);}
+.ex-media{transition:transform .6s ease;}
+
+/* ── "We return. We remember. We flow." strip (image 3) ── */
+.flowstrip{background-color:var(--aged);padding:5.5rem 3rem;}
+.flow-inner{max-width:1200px;margin:0 auto;display:grid;
+  grid-template-columns:minmax(0,0.7fr) minmax(0,2fr);gap:3rem;align-items:center;}
+.flow-words{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.5;color:var(--cacao);}
+.flow-words .wave-sm{display:block;width:54px;margin-top:1.4rem;}
+.flow-frames{display:grid;grid-template-columns:repeat(5,1fr);gap:0.8rem;}
+.flow-frame{position:relative;aspect-ratio:3/4;overflow:hidden;
+  border:1px solid var(--bone-line);}
+.flow-frame .ground{position:absolute;inset:0;}
+.flow-frame:nth-child(1) .ground{background:linear-gradient(160deg,#3E4A30,#6E4A2E);}
+.flow-frame:nth-child(2) .ground{background:linear-gradient(160deg,#9E4A28,#A8663F);}
+.flow-frame:nth-child(3) .ground{background:linear-gradient(160deg,#6E4A2E,#D9A437);}
+.flow-frame:nth-child(4) .ground{background:linear-gradient(160deg,#26395C,#34507A);}
+.flow-frame:nth-child(5) .ground{background:linear-gradient(160deg,#4A2C18,#9E4A28);}
+
+/* ── Indigo wave divider (image 2 + 3) ── */
+.wave{display:block;width:140px;height:auto;}
+.wave path{stroke:var(--indigo);fill:none;stroke-width:1.5;}
+.wave.center{margin-left:auto;margin-right:auto;}
+.wave.light path{stroke:var(--maize);}
+
+/* ── Consultation page (image 2): altar panel + aged-paper column ── */
+.consult{background-color:var(--aged);padding:9.5rem 3rem 5rem;}
+.consult-inner{max-width:1180px;margin:0 auto;display:grid;
+  grid-template-columns:minmax(0,0.92fr) minmax(0,1.08fr);gap:0;
+  border:1px solid var(--bone-line);}
+
+/* Left altar panel — placeholder for Nichole's composed image */
+.altar{position:relative;background-color:var(--cacao);overflow:hidden;min-height:560px;}
+.altar .altar-bg{position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 40% at 35% 28%, rgba(217,164,55,0.22), transparent 55%),
+    radial-gradient(ellipse 50% 50% at 70% 78%, rgba(158,74,40,0.30), transparent 60%),
+    linear-gradient(165deg, #2A1A10, #4A2C18 60%, #3A2417);}
+.altar svg{position:absolute;inset:0;width:100%;height:100%;}
+.altar .altar-edge{position:absolute;top:0;right:0;bottom:0;width:46px;z-index:3;
+  background:repeating-linear-gradient(180deg, var(--indigo) 0 8px, #2C3E5C 8px 16px);
+  opacity:0.85;}
+.altar-cap{position:absolute;left:1.6rem;bottom:1.4rem;z-index:4;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.82rem;
+  color:rgba(241,232,213,0.6);max-width:60%;}
+
+/* Right editorial column */
+.consult-col{padding:4rem 3.4rem;background-color:var(--aged);}
+.consult-col .eyebrow-line{font-family:'Inter',sans-serif;font-weight:500;
+  font-size:0.66rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--sienna);
+  margin-bottom:1rem;}
+.consult-col h1{font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(2.4rem,4vw,3.4rem);line-height:1.08;color:var(--cacao);
+  margin-bottom:0.9rem;}
+.consult-col h1 em{font-style:italic;color:var(--sienna);}
+.consult-col .lineage{font-family:'Inter',sans-serif;font-weight:500;
+  font-size:0.62rem;letter-spacing:0.34em;text-transform:uppercase;color:var(--indigo-deep);
+  margin-bottom:1.6rem;}
+.consult-col .witnessed{font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-weight:300;font-size:clamp(1.15rem,2vw,1.4rem);color:var(--cacao);
+  margin-bottom:2.4rem;}
+.consult-col .prose-long p{font-size:0.92rem;line-height:2.05;max-width:none;}
+.consult-rule{border:none;border-top:1px solid var(--bone-line);margin:2.4rem 0;}
+.receive h4,.investment h4{font-family:'Inter',sans-serif;font-weight:500;
+  font-size:0.66rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--sienna);
+  margin-bottom:1.2rem;}
+.receive ul{list-style:none;display:flex;flex-direction:column;gap:0.85rem;}
+.receive li{font-family:'Libre Baskerville',serif;font-size:0.9rem;line-height:1.6;
+  color:var(--cacao);padding-left:1.5rem;position:relative;}
+.receive li::before{content:'';position:absolute;left:0;top:0.55em;
+  width:7px;height:7px;border:1px solid var(--sienna);transform:rotate(45deg);}
+.investment .price{font-family:'Cormorant Garamond',serif;font-weight:400;
+  font-size:2.4rem;color:var(--cacao);line-height:1;margin-bottom:0.9rem;}
+.investment .sliding{font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:0.98rem;line-height:1.6;color:var(--tierra-soft);max-width:42ch;}
+.consult-foot{font-family:'Inter',sans-serif;font-weight:500;font-size:0.62rem;
+  letter-spacing:0.28em;text-transform:uppercase;color:var(--tobacco);
+  margin-top:2.6rem;}
+.consult-cta{margin-top:2rem;}
+
+/* ── Footer social (image 3: FOLLOW ALONG) ── */
+.ft-social a{display:inline-flex;align-items:center;justify-content:center;
+  width:38px;height:38px;border:1px solid rgba(241,232,213,0.25);margin-right:0.7rem;
+  transition:border-color .3s,background .3s;}
+.ft-social a:hover{border-color:var(--maize);background:rgba(217,164,55,0.12);}
+.ft-social svg{width:17px;height:17px;}
+.ft-social svg *{stroke:var(--aged);}
+
+/* ── v3 responsive ── */
+@media (max-width:980px){
+  .explore-grid{grid-template-columns:repeat(2,1fr);}
+  .ex-card:nth-child(odd){border-right:1px solid rgba(241,232,213,0.08);}
+  .ex-card{border-bottom:1px solid rgba(241,232,213,0.08);}
+}
+@media (max-width:880px){
+  .hero-v2{padding:7.5rem 1.5rem 4.5rem;}
+  .hero-clearing{padding:2.6rem 1.4rem;}
+  .explore-grid{grid-template-columns:1fr;}
+  .ex-card{min-height:280px;border-right:none;}
+  .flowstrip{padding:4rem 1.5rem;}
+  .flow-inner{grid-template-columns:1fr;gap:2.2rem;}
+  .flow-frames{grid-template-columns:repeat(3,1fr);}
+  .flow-frame:nth-child(4),.flow-frame:nth-child(5){display:none;}
+  .consult{padding:7.5rem 1.5rem 3.5rem;}
+  .consult-inner{grid-template-columns:1fr;}
+  .altar{min-height:340px;}
+  .consult-col{padding:2.8rem 1.6rem;}
+}
+@media (prefers-reduced-motion: reduce){
+  .chev svg{animation:none;}
+  .ex-media{transition:none;}
 }
