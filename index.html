@@ -29,26 +29,20 @@
 
 <main id="main">
 
-<!-- ═══ HERO (image 3 direction) ═══
-     Replace .hero-bg contents with Nichole's real hero collage /
-     double-exposure photograph (woman + river + landscape). The
-     aged-paper clearing keeps the tagline legible over any image. -->
+<!-- ═══ HERO ═══ Type-led and complete on its own. When images/hero.jpg
+     exists it layers in behind the clearing; until then the warm ground stands. -->
 <section class="hero-v2">
   <div class="hero-bg" aria-hidden="true">
     <div class="layer wash"></div>
+    <img class="img-slot" src="images/hero.jpg" alt="" onerror="this.remove()">
     <svg viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <circle cx="250" cy="230" r="78" fill="none" stroke="#D9A437" stroke-width="1.4" opacity="0.8"/>
-      <circle cx="250" cy="230" r="7" fill="#D9A437" opacity="0.85"/>
-      <path d="M-40,520 C220,470 400,580 640,520 S1080,430 1480,510" fill="none" stroke="#34507A" stroke-width="1.6" opacity="0.6"/>
-      <path d="M-40,560 C240,512 420,620 660,560 S1100,470 1480,548" fill="none" stroke="#34507A" stroke-width="1.2" opacity="0.42"/>
-      <path d="M-40,600 C260,556 440,660 680,600 S1120,512 1480,588" fill="none" stroke="#9E4A28" stroke-width="1.2" opacity="0.5"/>
-      <path d="M-30,690 C260,630 460,740 740,680 C980,628 1180,742 1480,660" fill="none" stroke="#8A3322" stroke-width="1.5" opacity="0.7"/>
-      <circle cx="740" cy="680" r="4" fill="none" stroke="#8A3322" stroke-width="1.3" opacity="0.7"/>
-      <g opacity="0.3" stroke="#F1E8D5" stroke-width="1" fill="none">
-        <path d="M1080,150 q30,-8 60,0 t60,0 t60,0 t60,0 t60,0"/>
-        <path d="M1080,172 q30,8 60,0 t60,0 t60,0 t60,0 t60,0"/>
-        <path d="M1080,194 q30,-8 60,0 t60,0 t60,0 t60,0 t60,0"/>
-      </g>
+      <circle cx="250" cy="230" r="78" fill="none" stroke="#D9A437" stroke-width="1.4" opacity="0.7"/>
+      <circle cx="250" cy="230" r="7" fill="#D9A437" opacity="0.8"/>
+      <path d="M-40,520 C220,470 400,580 640,520 S1080,430 1480,510" fill="none" stroke="#34507A" stroke-width="1.6" opacity="0.5"/>
+      <path d="M-40,560 C240,512 420,620 660,560 S1100,470 1480,548" fill="none" stroke="#34507A" stroke-width="1.2" opacity="0.36"/>
+      <path d="M-40,600 C260,556 440,660 680,600 S1120,512 1480,588" fill="none" stroke="#9E4A28" stroke-width="1.2" opacity="0.42"/>
+      <path d="M-30,690 C260,630 460,740 740,680 C980,628 1180,742 1480,660" fill="none" stroke="#8A3322" stroke-width="1.5" opacity="0.6"/>
+      <circle cx="740" cy="680" r="4" fill="none" stroke="#8A3322" stroke-width="1.3" opacity="0.6"/>
     </svg>
   </div>
   <div class="hero-vignette" aria-hidden="true"></div>
@@ -68,64 +62,68 @@
   </div>
 </section>
 
-<!-- ═══ EXPLORE CARDS (image 3) ═══
-     Five tiles → real pages, using Nichole's evocative vocabulary.
-     Drop a real <img> into each .ex-media when photography arrives. -->
+<!-- ═══ EXPLORE ═══ Elegant editorial cards — finished with type alone.
+     A photo in each images/card-*.jpg becomes the card background later. -->
 <section class="explore" id="explore">
   <div class="explore-grid">
 
     <a class="ex-card" href="philosophy.html">
-      <div class="ex-media" aria-hidden="true"><div class="ground"></div>
-        <svg viewBox="0 0 300 440" xmlns="http://www.w3.org/2000/svg"><path d="M-10,200 q40,-10 80,0 t80,0 t80,0 t80,0" fill="none" stroke="#F1E8D5" stroke-width="1"/><path d="M-10,230 q40,10 80,0 t80,0 t80,0 t80,0" fill="none" stroke="#F1E8D5" stroke-width="1"/><circle cx="150" cy="120" r="34" fill="none" stroke="#D9A437" stroke-width="1.2"/></svg>
-      </div>
+      <div class="ex-media" aria-hidden="true"><img class="img-slot" src="images/card-philosophy.jpg" alt="Hands grinding herbs in a stone mortar and pestle" onerror="this.remove()"></div>
       <div class="ex-body">
-        <span class="tag">Philosophy</span>
-        <h3>The Ritual Arts of Living in Relationship</h3>
-        <span class="ex-explore">Explore</span>
+        <span class="ex-num">01</span>
+        <div class="ex-lower">
+          <span class="tag">Philosophy</span>
+          <h3>The Ritual Arts of Living in Relationship</h3>
+          <span class="ex-explore">Explore →</span>
+        </div>
       </div>
     </a>
 
     <a class="ex-card" href="body-plant-story.html">
-      <div class="ex-media" aria-hidden="true"><div class="ground"></div>
-        <svg viewBox="0 0 300 440" xmlns="http://www.w3.org/2000/svg"><path d="M150,440 C146,330 154,250 150,170" fill="none" stroke="#F1E8D5" stroke-width="1.1" opacity="0.7"/><path d="M150,260 C118,236 100,206 108,172" fill="none" stroke="#F1E8D5" stroke-width="1" opacity="0.6"/><circle cx="150" cy="150" r="20" fill="none" stroke="#D9A437" stroke-width="1.2"/></svg>
-      </div>
+      <div class="ex-media" aria-hidden="true"><img class="img-slot" src="images/card-sessions.jpg" alt="Hands cradling fresh herbs in soft daylight" onerror="this.remove()"></div>
       <div class="ex-body">
-        <span class="tag">Private Sessions</span>
-        <h3>Body, Plant &amp; Story</h3>
-        <span class="ex-explore">Explore</span>
+        <span class="ex-num">02</span>
+        <div class="ex-lower">
+          <span class="tag">Private Sessions</span>
+          <h3>Body, Plant &amp; Story</h3>
+          <span class="ex-explore">Explore →</span>
+        </div>
       </div>
     </a>
 
     <a class="ex-card" href="food-ritual-gathering.html">
-      <div class="ex-media" aria-hidden="true"><div class="ground"></div>
-        <svg viewBox="0 0 300 440" xmlns="http://www.w3.org/2000/svg"><circle cx="150" cy="200" r="60" fill="none" stroke="#F1E8D5" stroke-width="1" opacity="0.6"/><circle cx="150" cy="200" r="30" fill="none" stroke="#D9A437" stroke-width="1.1" opacity="0.7"/><path d="M150,140 L150,260 M90,200 L210,200" stroke="#F1E8D5" stroke-width="0.8" opacity="0.4"/></svg>
-      </div>
+      <div class="ex-media" aria-hidden="true"><img class="img-slot" src="images/card-table.jpg" alt="Overhead view of an ancestral shared meal in clay bowls" onerror="this.remove()"></div>
       <div class="ex-body">
-        <span class="tag">Community Offerings</span>
-        <h3>The Community Table</h3>
-        <span class="ex-explore">Explore</span>
+        <span class="ex-num">03</span>
+        <div class="ex-lower">
+          <span class="tag">Community Offerings</span>
+          <h3>The Community Table</h3>
+          <span class="ex-explore">Explore →</span>
+        </div>
       </div>
     </a>
 
     <a class="ex-card" href="gatherings.html">
-      <div class="ex-media" aria-hidden="true"><div class="ground"></div>
-        <svg viewBox="0 0 300 440" xmlns="http://www.w3.org/2000/svg"><circle cx="110" cy="180" r="14" fill="none" stroke="#F1E8D5" stroke-width="1" opacity="0.6"/><circle cx="170" cy="200" r="14" fill="none" stroke="#F1E8D5" stroke-width="1" opacity="0.6"/><circle cx="140" cy="240" r="14" fill="none" stroke="#D9A437" stroke-width="1.1" opacity="0.7"/><path d="M110,180 L170,200 L140,240 Z" fill="none" stroke="#F1E8D5" stroke-width="0.7" opacity="0.35"/></svg>
-      </div>
+      <div class="ex-media" aria-hidden="true"><img class="img-slot" src="images/card-gatherings.jpg" alt="A circle of people gathered outdoors by the water" onerror="this.remove()"></div>
       <div class="ex-body">
-        <span class="tag">Community</span>
-        <h3>Gatherings</h3>
-        <span class="ex-explore">Explore</span>
+        <span class="ex-num">04</span>
+        <div class="ex-lower">
+          <span class="tag">Community</span>
+          <h3>Gatherings</h3>
+          <span class="ex-explore">Explore →</span>
+        </div>
       </div>
     </a>
 
     <a class="ex-card" href="stay-connected.html">
-      <div class="ex-media" aria-hidden="true"><div class="ground"></div>
-        <svg viewBox="0 0 300 440" xmlns="http://www.w3.org/2000/svg"><rect x="95" y="150" width="110" height="150" fill="none" stroke="#F1E8D5" stroke-width="1" opacity="0.55"/><path d="M150,150 L150,300 M110,185 L190,185 M110,215 L190,215 M110,245 L175,245" stroke="#F1E8D5" stroke-width="0.7" opacity="0.4"/><circle cx="150" cy="120" r="8" fill="none" stroke="#D9A437" stroke-width="1.1"/></svg>
-      </div>
+      <div class="ex-media" aria-hidden="true"><img class="img-slot" src="images/card-journal.jpg" alt="An open handwritten journal with pressed botanicals" onerror="this.remove()"></div>
       <div class="ex-body">
-        <span class="tag">Stories &amp; Reflections</span>
-        <h3>The Journal</h3>
-        <span class="ex-explore">Explore</span>
+        <span class="ex-num">05</span>
+        <div class="ex-lower">
+          <span class="tag">Stories &amp; Reflections</span>
+          <h3>The Journal</h3>
+          <span class="ex-explore">Explore →</span>
+        </div>
       </div>
     </a>
 
@@ -165,57 +163,36 @@
   </div>
 </section>
 
-<!-- ═══ WE RETURN. WE REMEMBER. WE FLOW. (image 3) ═══
-     Replace each .flow-frame ground with a real photograph. -->
+<!-- ═══ WE RETURN. WE REMEMBER. WE FLOW. ═══ Typographic; image row appears
+     only when images/flow-*.jpg exist (hidden until then — no empty boxes). -->
 <section class="flowstrip">
-  <div class="flow-inner">
-    <div class="flow-words reveal">
-      We return.<br>We remember.<br>We flow.
-      <svg class="wave-sm" viewBox="0 0 60 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2,9 q7,-7 14,0 t14,0 t14,0 t14,0" fill="none" stroke="#34507A" stroke-width="1.4"/></svg>
-    </div>
-    <div class="flow-frames reveal" aria-hidden="true">
-      <div class="flow-frame"><div class="ground"></div></div>
-      <div class="flow-frame"><div class="ground"></div></div>
-      <div class="flow-frame"><div class="ground"></div></div>
-      <div class="flow-frame"><div class="ground"></div></div>
-      <div class="flow-frame"><div class="ground"></div></div>
-    </div>
+  <p class="flow-words reveal">
+    We return.<br>We remember.<br>We flow.
+    <svg class="wave-sm" viewBox="0 0 60 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2,9 q7,-7 14,0 t14,0 t14,0 t14,0" fill="none" stroke="#34507A" stroke-width="1.4"/></svg>
+  </p>
+  <div class="flow-frames" data-img-gate aria-hidden="true">
+    <div class="flow-frame"><img class="img-slot" src="images/flow-1.jpg" alt="A river winding through forest" onerror="this.remove()"></div>
+    <div class="flow-frame"><img class="img-slot" src="images/flow-2.jpg" alt="Hands holding a steaming clay cup" onerror="this.remove()"></div>
+    <div class="flow-frame"><img class="img-slot" src="images/flow-3.jpg" alt="A detail of a woven basket" onerror="this.remove()"></div>
+    <div class="flow-frame"><img class="img-slot" src="images/flow-4.jpg" alt="A woman tending plants by the river" onerror="this.remove()"></div>
+    <div class="flow-frame"><img class="img-slot" src="images/flow-5.jpg" alt="Wild herbs and botanicals" onerror="this.remove()"></div>
   </div>
 </section>
 
-<!-- ═══ ABOUT PREVIEW ═══ -->
+<!-- ═══ ABOUT PREVIEW ═══ Centered editorial; her portrait lives on the About page. -->
 <section class="about" id="about">
-  <div class="about-inner">
-    <figure class="about-art reveal">
-      <div class="arch" role="img" aria-label="Placeholder for a portrait of Nichole, partially veiled by plants.">
-        <svg viewBox="0 0 400 530" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
-          <path d="M200,530 C196,420 204,330 198,250 C194,200 206,150 200,96" fill="none" stroke="#3A2417" stroke-width="1.2" opacity="0.4"/>
-          <path d="M199,300 C160,272 138,236 146,196" fill="none" stroke="#3A2417" stroke-width="1" opacity="0.36"/>
-          <ellipse cx="143" cy="188" rx="13" ry="7.5" transform="rotate(-38 143 188)" fill="none" stroke="#3A2417" stroke-width="1" opacity="0.36"/>
-          <path d="M201,360 C242,330 262,292 254,250" fill="none" stroke="#3A2417" stroke-width="1" opacity="0.36"/>
-          <ellipse cx="257" cy="243" rx="13" ry="7.5" transform="rotate(40 257 243)" fill="none" stroke="#3A2417" stroke-width="1" opacity="0.36"/>
-          <circle cx="200" cy="80" r="22" fill="none" stroke="#8A3322" stroke-width="1.2" opacity="0.6"/>
-          <circle cx="200" cy="80" r="9" fill="none" stroke="#8A3322" stroke-width="1" opacity="0.5"/>
-          <path d="M-10,470 q25,-5 50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0" fill="none" stroke="#34507A" stroke-width="1" opacity="0.3"/>
-        </svg>
-      </div>
-      <figcaption class="art-caption">Portrait to come — partially veiled by plants.</figcaption>
-    </figure>
-
-    <div class="about-copy">
-      <span class="label reveal">— About</span>
-      <h2 class="reveal">Nichole Elana</h2>
-      <p class="about-lead reveal">A first-generation Colombian-American born by the Pacific, where ocean meets memory.</p>
-      <div class="prose">
-        <p class="reveal">Her roots stretch from the Afro-Colombian rhythms of the Pacific coast to the Andes, the Cherokee lands of the Southeast, and the folk traditions of Swedish-German lineage. She was raised by hands that understood care as ceremony — medicine that lived in flower baths and simmering pots, in remedies whispered in kitchens, in songs carried to the water.</p>
-        <p class="reveal">For more than a decade, she has studied herbalism, nourishment, ritual arts, and the many ways people tend life through seasons of change.</p>
-      </div>
-      <a class="about-link reveal" href="about.html">Read her story</a>
+  <div class="band-narrow center about-copy">
+    <span class="label reveal">— About</span>
+    <h2 class="reveal">Nichole Elana</h2>
+    <p class="about-lead reveal">A first-generation Colombian-American born by the Pacific, where ocean meets memory.</p>
+    <div class="prose">
+      <p class="reveal">Her roots stretch from the Afro-Colombian rhythms of the Pacific coast to the Andes, the Cherokee lands of the Southeast, and the folk traditions of Swedish-German lineage. She was raised by hands that understood care as ceremony — medicine that lived in flower baths and simmering pots, in remedies whispered in kitchens, in songs carried to the water.</p>
     </div>
+    <a class="about-link reveal" href="about.html">Read her story →</a>
   </div>
 </section>
 
-<!-- ═══ STAY CONNECTED (image 3: from the river to your inbox) ═══ -->
+<!-- ═══ STAY CONNECTED ═══ -->
 <section class="connect" id="connect">
   <svg class="connect-water" viewBox="0 0 1440 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="none">
     <path d="M0,40 C180,15 340,68 540,44 S880,12 1080,48 S1340,70 1440,38" fill="none" stroke="#34507A" stroke-width="1.3" opacity="0.7"/>
@@ -235,12 +212,10 @@
 
 </main>
 
-<!-- ═══ FOOTER (image 3: Follow Along) ═══ -->
 <footer>
   <div class="ft-brand reveal">
     <span class="ft-name">Madre y Agua</span>
     <p>Stories as medicine. Following the threads between memory and becoming.</p>
-    <!-- FOLLOW ALONG — placeholder links; swap in Nichole's real handles -->
     <div class="ft-social" style="margin-top:1.6rem;">
       <a href="#" aria-label="Instagram (link to be added)" title="Instagram — link to be added">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="5" stroke-width="1.4"/><circle cx="12" cy="12" r="4" stroke-width="1.4"/><circle cx="17.5" cy="6.5" r="1" fill="#F1E8D5" stroke="none"/></svg>

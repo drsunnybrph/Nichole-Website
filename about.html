@@ -40,8 +40,9 @@
 <!-- Roots: portrait + lineage, on Clay Rose (reuses homepage .about layout) -->
 <section class="about">
   <div class="about-inner">
-    <figure class="about-art reveal">
-      <div class="arch" role="img" aria-label="Placeholder for a portrait of Nichole, partially veiled by plants.">
+    <figure class="about-art reveal" data-img-gate>
+      <div class="arch">
+        <img class="img-slot" src="images/about-portrait.jpg" alt="Portrait of Nichole, partially veiled by plants" onerror="this.remove()">
         <svg viewBox="0 0 400 530" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
           <path d="M200,530 C196,420 204,330 198,250 C194,200 206,150 200,96" fill="none" stroke="#3D1E12" stroke-width="1.2" opacity="0.4"/>
           <path d="M199,300 C160,272 138,236 146,196" fill="none" stroke="#3D1E12" stroke-width="1" opacity="0.36"/>
@@ -54,7 +55,6 @@
           <path d="M-10,488 q25,5 50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0" fill="none" stroke="#1F666C" stroke-width="1" opacity="0.22"/>
         </svg>
       </div>
-      <figcaption class="art-caption">Portrait to come — partially veiled by plants.</figcaption>
     </figure>
 
     <div class="about-copy">

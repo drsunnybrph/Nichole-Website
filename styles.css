@@ -932,3 +932,82 @@ footer{
   .chev svg{animation:none;}
   .ex-media{transition:none;}
 }
+
+/* ── Image slots: drop real files into /images and they appear.
+   Until a file exists, the <img> onerror removes itself and the
+   warm placeholder beneath shows — never a broken-image icon. ── */
+.img-slot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+.ex-media img.img-slot{z-index:1;}
+.hero-bg img.img-slot{z-index:1;}
+.flow-frame img.img-slot{z-index:1;}
+.about-art .arch img.img-slot{z-index:1;}
+.altar img.img-slot{z-index:5;}
+
+/* ════════════════════════════════════════════════════════════
+   v4 — INTERIM POLISH: homepage looks finished WITHOUT photos.
+   Image slots stay; photos enhance later but are not required.
+   Purely-decorative image rows hide until a real file loads.
+   ════════════════════════════════════════════════════════════ */
+
+/* Image-gated elements: hidden until their image actually loads */
+[data-img-gate]:not(.img-ready){display:none;}
+
+/* HERO — richer, intentional atmospheric ground + bolder type */
+.hero-bg .wash{
+  background:
+    radial-gradient(ellipse 50% 45% at 20% 28%, rgba(217,164,55,0.20), transparent 55%),
+    radial-gradient(ellipse 55% 55% at 84% 74%, rgba(158,74,40,0.30), transparent 60%),
+    radial-gradient(ellipse 60% 60% at 58% 12%, rgba(52,80,122,0.22), transparent 60%),
+    linear-gradient(165deg, #1E130B 0%, #3A2417 48%, #5C3B25 100%);
+}
+.hero-clearing{max-width:640px;padding:4.5rem 3.2rem;}
+.hero-clearing::before{
+  background:radial-gradient(ellipse 78% 78% at 50% 50%, rgba(241,232,213,0.95) 0%, rgba(241,232,213,0.80) 55%, rgba(241,232,213,0) 100%);
+}
+.hero-clearing h1{font-size:clamp(2.6rem,5.2vw,4.4rem);margin-bottom:2rem;}
+
+/* EXPLORE — elegant dark editorial cards on aged paper; complete when empty */
+.explore{background-color:var(--aged);padding:5.5rem 2.4rem;}
+.explore-grid{grid-template-columns:repeat(5,1fr);gap:1.2rem;border-top:none;}
+.ex-card{
+  background-color:var(--cacao);
+  min-height:clamp(300px,34vw,400px);
+  padding:2.2rem 1.7rem;
+  border:none;border-top:2px solid var(--sienna);
+  transition:transform .35s ease, box-shadow .35s ease;
+}
+.ex-card:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(26,20,16,0.22);}
+.ex-card::after{
+  background:linear-gradient(to top, rgba(26,20,16,0.78) 0%, rgba(26,20,16,0.30) 55%, rgba(26,20,16,0.12) 100%);
+}
+.ex-body{display:flex;flex-direction:column;justify-content:space-between;height:100%;}
+.ex-num{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:2.4rem;line-height:1;color:var(--maize);opacity:0.5;
+}
+.ex-lower .tag{display:block;margin-bottom:0.7rem;}
+.ex-lower h3{margin-bottom:1rem;}
+.ex-explore{display:inline-block;}
+
+/* FLOW — typographic centerpiece; image row appears only once photos exist */
+.flowstrip{background-color:var(--aged);padding:6rem 2.4rem;}
+.flow-words{
+  text-align:center;max-width:none;margin:0 auto;
+  font-size:clamp(1.9rem,4vw,3rem);line-height:1.5;color:var(--cacao);
+}
+.flow-words .wave-sm{margin:1.6rem auto 0;}
+.flow-frames{grid-template-columns:repeat(5,1fr);gap:0.8rem;max-width:1100px;margin:3rem auto 0;}
+.flow-frames.img-ready{display:grid;}
+.flow-frame{background-color:var(--cacao);}
+
+/* ABOUT — single column until a portrait exists, two columns once it does */
+.about-inner{grid-template-columns:1fr;}
+.about-inner:has(.img-ready){grid-template-columns:minmax(0,0.78fr) minmax(0,1.22fr);}
+.about-inner:not(:has(.img-ready)) .about-copy{max-width:720px;margin:0 auto;}
+.about-art[data-img-gate].img-ready{display:block;}
+
+/* CONSULTATION — single clean editorial column until the altar image
+   exists; expands to the two-column image-2 layout once it loads. */
+.consult-inner{grid-template-columns:1fr;}
+.consult-inner:not(:has(.img-ready)){max-width:760px;border:none;}
+.consult-inner:has(.img-ready){grid-template-columns:minmax(0,0.92fr) minmax(0,1.08fr);}

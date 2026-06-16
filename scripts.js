@@ -38,3 +38,13 @@ if (eventCards.length) {
   const empty = document.getElementById('events-empty');
   if (empty && visible === 0) empty.style.display = 'block';
 }
+
+// Reveal image-gated elements only when their image actually loads.
+// (Until then they stay hidden — no empty placeholder boxes.)
+document.querySelectorAll('[data-img-gate]').forEach(function (gate) {
+  var img = gate.querySelector('img');
+  if (!img) return;
+  var reveal = function () { gate.classList.add('img-ready'); };
+  if (img.complete && img.naturalWidth > 0) reveal();
+  else img.addEventListener('load', reveal);
+});
